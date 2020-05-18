@@ -1,109 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.roy.Expenses_Management_System.Activities.Add_expenses">
+    android:background="@drawable/bg1"
+    tools:context="com.roy.Expenses_Management_System.Activities.Create_Group">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@android:dimen/thumbnail_height"
-        android:background="@color/theme_color">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.37" />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30sp"
-            android:layout_marginHorizontal="30sp">
+    <TextView
+        android:id="@+id/show_UserID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:text="ID 7584968126"
+        android:textColor="@color/colorWhite"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
 
-            <TextView
-                android:id="@+id/UserId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/UserIdView"
-                android:textSize="25sp"
-                android:textColor="@color/colorWhite"></TextView>
+    <TextView
+        android:id="@+id/show_GroupName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="8dp"
+        android:text="Sada Aada"
+        android:textColor="@color/theme_color_2"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/show_UserID"
+        app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/UserName"
-                android:layout_below="@+id/UserId"
-                android:textColor="@color/colorWhite"
-                android:layout_marginLeft="60sp"></TextView>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:background="@drawable/img_circular_bg"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.344"
+        app:srcCompat="@drawable/ic_person_black_24dp"
+        tools:ignore="VectorDrawableCompat" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="82sp"
-                android:layout_height="82sp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                app:srcCompat="@drawable/avatar" />
-        </RelativeLayout>
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/add_expenses_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD EXPENSES"
+        android:textColor="@color/title_text_color"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline7"
+        app:layout_constraintVertical_bias="0.071" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="30sp">
-
-                <TextView
-                    android:id="@+id/titleAddExpenses"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Expenses"
-                    android:textSize="30sp"
-                    android:layout_centerHorizontal="true"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="25sp"
-                    android:textColor="@color/colorPrimaryDark"></TextView>
-
-                <EditText
-                    android:id="@+id/itemDis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/titleAddExpenses"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="12sp"
-                    android:ems="10"
-                    android:hint="Item "
-                    android:inputType="text"/>
-
-                <EditText
-                    android:id="@+id/itemPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/itemDis"
-                    android:layout_centerHorizontal="true"
-                    android:ems="10"
-                    android:hint="Price"
-                    android:inputType="numberDecimal"/>
-
-                <Button
-                    android:id="@+id/showData"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/itemPrice"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="14sp"
-                    android:background="#E405A5"
-                    android:ems="13"
-                    android:text="Add"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="bold"></Button>
-
-            </RelativeLayout>
-
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
