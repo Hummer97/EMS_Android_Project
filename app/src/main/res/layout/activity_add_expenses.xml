@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.roy.Expenses_Management_System.Activities.Add_expenses">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@android:dimen/thumbnail_height"
+        android:background="@color/theme_color">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:layout_marginHorizontal="30sp">
+
+            <TextView
+                android:id="@+id/UserId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/UserIdView"
+                android:textSize="25sp"
+                android:textColor="@color/colorWhite"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/UserName"
+                android:layout_below="@+id/UserId"
+                android:textColor="@color/colorWhite"
+                android:layout_marginLeft="60sp"></TextView>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="82sp"
+                android:layout_height="82sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/avatar" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="30sp">
+
+                <TextView
+                    android:id="@+id/titleAddExpenses"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Expenses"
+                    android:textSize="30sp"
+                    android:layout_centerHorizontal="true"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="25sp"
+                    android:textColor="@color/colorPrimaryDark"></TextView>
+
+                <EditText
+                    android:id="@+id/itemDis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/titleAddExpenses"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="12sp"
+                    android:ems="10"
+                    android:hint="Item "
+                    android:inputType="text"/>
+
+                <EditText
+                    android:id="@+id/itemPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/itemDis"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10"
+                    android:hint="Price"
+                    android:inputType="numberDecimal"/>
+
+                <Button
+                    android:id="@+id/showData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/itemPrice"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14sp"
+                    android:background="#E405A5"
+                    android:ems="13"
+                    android:text="Add"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"></Button>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

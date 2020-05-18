@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Expenses_Mnagement_System</string>
+    <string name="button_NextBtn">Next</string>
+    <string name="Group_name">Group Name</string>
+    <string name="GroupSize">Group Size</string>
+    <string name="UserName" translatable="false">Avinash Roy</string>
+    <string name="UserIdView" translatable="false">ID 198730992</string>
+</resources>

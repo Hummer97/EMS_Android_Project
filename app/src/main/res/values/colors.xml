@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">#ffffff</color>
+
+    //-------------Theme color--------------
+    <color name="theme_color">#25378A</color>
+    <color name="theme_color_2">#09134A</color>
+
+    <color name="colorBlue1">#FFE405A5</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorGreen">#077A6F</color>
+    <color name="colorNone">#00F1EEEE</color>
+    <color name="txt_input_bgcolor">#AEA9A9</color>
+
+    //-------Expenses card color---------
+    <color name="card_bg_color">#f6f6f6</color>
+    <color name="title_text_color">#258bd6</color>
+    <color name="content_text_color">#999da4</color>
+
+    //--------Notification card color-----------
+    <color name="newscard_bg_color">#BAB9F6CA</color>
+    <color name="nwtitle_text_color">#00C853</color>
+    <color name="nwcontent_text_color">#999da4</color>
+
+    //---------Color For Button Style----------
+    <color name="gradient_start_color">#4c84ff</color>
+    <color name="gradient_end_color">#18a3fe</color>
+
+    //----------Color For Tab and screen text-------
+    <color name="tab_indicator_gray">#c0c0c0</color>
+    <color name="intro_title_color">#000000</color>
+    <color name="intro_description_color">#656565</color>
+
+</resources>

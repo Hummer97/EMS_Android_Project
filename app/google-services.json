@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "582565797740",
+    "firebase_url": "https://expensesmanagementsystem.firebaseio.com",
+    "project_id": "expensesmanagementsystem",
+    "storage_bucket": "expensesmanagementsystem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582565797740:android:9844ec99288b3565e39d49",
+        "android_client_info": {
+          "package_name": "com.roy.Expenses_Management_System"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "582565797740-ffuf1v70mgthnt9h9q772quq6r8on0m7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCMtBBjeRPvTqI5t4-0bk9l35qpqau4_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "582565797740-ffuf1v70mgthnt9h9q772quq6r8on0m7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
