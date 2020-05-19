@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg1"
+    android:background="@mipmap/bg"
     tools:context="com.roy.Expenses_Management_System.Activities.Create_Group">
 
     <androidx.constraintlayout.widget.Guideline
@@ -18,8 +18,8 @@
         android:id="@+id/show_UserID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:text="ID 7584968126"
         android:textColor="@color/colorWhite"
         android:textSize="25dp"
@@ -33,8 +33,8 @@
         android:id="@+id/show_GroupName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="8dp"
         android:text="Sada Aada"
         android:textColor="@color/theme_color_2"
@@ -59,20 +59,45 @@
         app:srcCompat="@drawable/ic_person_black_24dp"
         tools:ignore="VectorDrawableCompat" />
 
-    <TextView
-        android:id="@+id/add_expenses_title"
+    <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADD EXPENSES"
-        android:textColor="@color/title_text_color"
-        android:textSize="30dp"
-        android:textStyle="bold"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
-        app:layout_constraintVertical_bias="0.071" />
+        app:layout_constraintVertical_bias="0.3" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@mipmap/add_expenses_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintVertical_bias="0.0"
+        android:textColor="@color/colorWhite"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
