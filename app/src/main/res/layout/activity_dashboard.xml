@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.roy.Expenses_Management_System.Activities.Dashboard">
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -57,186 +59,192 @@
             </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <GridLayout
-            android:columnCount="2"
-            android:rowCount="3"
-            android:alignmentMode="alignMargins"
-            android:columnOrderPreserved="false"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
+            android:rowCount="3">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                app:cardElevation="6dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
-                android:layout_margin="12dp">
+                app:cardElevation="6dp">
 
                 <LinearLayout
                     android:id="@+id/profile"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
                     <ImageView
-                        android:src="@drawable/profile"
                         android:id="@+id/iamge1"
                         android:layout_width="80dp"
-                        android:layout_height="80dp">
-                    </ImageView>
+                        android:layout_height="80dp"
+                        android:src="@drawable/profile"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="Profile"
-                        android:textSize="18sp"
                         android:textColor="#6f6f6f"
-                        android:layout_marginTop="12dp"></TextView>
+                        android:textSize="18sp"></TextView>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                app:cardElevation="6dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
-                android:layout_margin="12dp">
+                app:cardElevation="6dp">
 
                 <LinearLayout
                     android:id="@+id/allExpense"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <ImageView
-                        android:src="@drawable/iconfinder_32_3319612"
                         android:layout_width="80dp"
-                        android:layout_height="80dp">
-                    </ImageView>
+                        android:layout_height="80dp"
+                        android:src="@drawable/iconfinder_32_3319612"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="All Expenses"
-                        android:textSize="18sp"
                         android:textColor="#6f6f6f"
-                        android:layout_marginTop="12dp"></TextView>
+                        android:textSize="18sp"></TextView>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                app:cardElevation="6dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
-                android:layout_margin="12dp">
+                app:cardElevation="6dp">
 
                 <LinearLayout
                     android:id="@+id/AddExpenses"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <ImageView
-                        android:src="@drawable/iconfinder_3_3319636"
                         android:layout_width="80dp"
-                        android:layout_height="80dp">
-                    </ImageView>
+                        android:layout_height="80dp"
+                        android:src="@drawable/iconfinder_3_3319636"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="Add Expenses"
-                        android:textSize="18sp"
                         android:textColor="#6f6f6f"
-                        android:layout_marginTop="12dp"></TextView>
+                        android:textSize="18sp"></TextView>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            app:cardElevation="6dp"
-            app:cardCornerRadius="12dp"
-            android:layout_margin="12dp">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:src="@drawable/iconfinder_12_3319602"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp">
-                </ImageView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Own Expenses"
-                    android:textSize="18sp"
-                    android:textColor="#6f6f6f"
-                    android:layout_marginTop="12dp"></TextView>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                app:cardElevation="6dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
-                android:layout_margin="12dp">
+                app:cardElevation="6dp">
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <ImageView
-                        android:src="@drawable/iconfinder_6_3319634"
                         android:layout_width="80dp"
-                        android:layout_height="80dp">
-                    </ImageView>
+                        android:layout_height="80dp"
+                        android:src="@drawable/iconfinder_12_3319602"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Receipts"
-                        android:textSize="18sp"
+                        android:layout_marginTop="12dp"
+                        android:text="Own Expenses"
                         android:textColor="#6f6f6f"
-                        android:layout_marginTop="12dp"></TextView>
+                        android:textSize="18sp"></TextView>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                app:cardElevation="6dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
-                android:layout_margin="12dp">
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/iconfinder_6_3319634"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Receipts"
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp"></TextView>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
 
                 <LinearLayout
                     android:id="@+id/News"
@@ -262,70 +270,70 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_columnWeight="1"-->
-<!--                android:layout_rowWeight="1"-->
-<!--                app:cardElevation="6dp"-->
-<!--                app:cardCornerRadius="12dp"-->
-<!--                android:layout_margin="12dp">-->
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_columnWeight="1"-->
+            <!--                android:layout_rowWeight="1"-->
+            <!--                app:cardElevation="6dp"-->
+            <!--                app:cardCornerRadius="12dp"-->
+            <!--                android:layout_margin="12dp">-->
 
-<!--                <LinearLayout-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:padding="16dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent">-->
+            <!--                <LinearLayout-->
+            <!--                    android:orientation="vertical"-->
+            <!--                    android:padding="16dp"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent">-->
 
-<!--                    <ImageView-->
-<!--                        android:src="@drawable/profile"-->
-<!--                        android:layout_width="80dp"-->
-<!--                        android:layout_height="80dp">-->
-<!--                    </ImageView>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Profile"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:textColor="#6f6f6f"-->
-<!--                        android:layout_marginTop="12dp"></TextView>-->
+            <!--                    <ImageView-->
+            <!--                        android:src="@drawable/profile"-->
+            <!--                        android:layout_width="80dp"-->
+            <!--                        android:layout_height="80dp">-->
+            <!--                    </ImageView>-->
+            <!--                    <TextView-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:text="Profile"-->
+            <!--                        android:textSize="18sp"-->
+            <!--                        android:textColor="#6f6f6f"-->
+            <!--                        android:layout_marginTop="12dp"></TextView>-->
 
-<!--                </LinearLayout>-->
+            <!--                </LinearLayout>-->
 
-<!--            </androidx.cardview.widget.CardView>-->
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_columnWeight="1"-->
-<!--                android:layout_rowWeight="1"-->
-<!--                app:cardElevation="6dp"-->
-<!--                app:cardCornerRadius="12dp"-->
-<!--                android:layout_margin="12dp">-->
+            <!--            </androidx.cardview.widget.CardView>-->
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_columnWeight="1"-->
+            <!--                android:layout_rowWeight="1"-->
+            <!--                app:cardElevation="6dp"-->
+            <!--                app:cardCornerRadius="12dp"-->
+            <!--                android:layout_margin="12dp">-->
 
-<!--                <LinearLayout-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:padding="16dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent">-->
+            <!--                <LinearLayout-->
+            <!--                    android:orientation="vertical"-->
+            <!--                    android:padding="16dp"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent">-->
 
-<!--                    <ImageView-->
-<!--                        android:src="@drawable/profile"-->
-<!--                        android:layout_width="80dp"-->
-<!--                        android:layout_height="80dp">-->
-<!--                    </ImageView>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Profile"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:textColor="#6f6f6f"-->
-<!--                        android:layout_marginTop="12dp"></TextView>-->
+            <!--                    <ImageView-->
+            <!--                        android:src="@drawable/profile"-->
+            <!--                        android:layout_width="80dp"-->
+            <!--                        android:layout_height="80dp">-->
+            <!--                    </ImageView>-->
+            <!--                    <TextView-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:text="Profile"-->
+            <!--                        android:textSize="18sp"-->
+            <!--                        android:textColor="#6f6f6f"-->
+            <!--                        android:layout_marginTop="12dp"></TextView>-->
 
-<!--                </LinearLayout>-->
+            <!--                </LinearLayout>-->
 
-<!--            </androidx.cardview.widget.CardView>-->
+            <!--            </androidx.cardview.widget.CardView>-->
         </GridLayout>
 
     </LinearLayout>
