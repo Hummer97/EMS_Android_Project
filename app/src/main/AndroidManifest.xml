@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".Activities.News" android:theme="@style/StatusBarAppTheme"/>
         <activity android:name=".Activities.Expenses" android:theme="@style/StatusBarAppTheme"/>
-        <activity android:name=".Activities.Profile" android:theme="@style/AppTheme.ActionBar.Transparent.StatusBarAppTheme"/>
+        <activity android:name=".Activities.Profile" />
         <activity android:name=".Activities.Add_expenses" android:theme="@style/StatusBarAppTheme"/>
         <activity android:name=".Activities.Dashboard" android:theme="@style/StatusBarAppTheme"/>
         <activity android:name=".Activities.Create_Group" android:theme="@style/StatusBarAppTheme"/>
