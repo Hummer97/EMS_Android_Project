@@ -99,21 +99,21 @@ public class Create_Group extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        rg_img = (CircleImageView) findViewById(R.id.rg_img);
-
-        rg_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(Build.VERSION.SDK_INT>=22)
-                {
-                    checkAndRequestForPermission();
-                }
-                else
-                {
-                    openGallery();
-                }
-            }
-        });
+//        rg_img = (CircleImageView) findViewById(R.id.rg_img);
+//
+//        rg_img.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(Build.VERSION.SDK_INT>=22)
+//                {
+//                    checkAndRequestForPermission();
+//                }
+//                else
+//                {
+//                    openGallery();
+//                }
+//            }
+//        });
 
     }
 

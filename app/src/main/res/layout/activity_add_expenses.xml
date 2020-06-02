@@ -62,14 +62,15 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Expenses Details"
+        android:hint="Expenses Details"
         android:textColor="@color/colorWhite"
         android:textColorHint="#F4F3F3"
+        android:backgroundTint="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.308" />
 
     <EditText
         android:id="@+id/editText2"
@@ -78,8 +79,10 @@
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Price"
+        android:hint="Price"
+        android:textColorHint="@color/colorWhite"
         android:textColor="@color/colorWhite"
+        android:backgroundTint="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

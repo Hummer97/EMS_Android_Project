@@ -12,44 +12,47 @@
         android:id="@+id/imageView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/profile_coverbg_1"
-        android:scaleType="fitXY"
         tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/profile_coverbg_2"
-        android:scaleType="fitXY"
-        tools:ignore="VectorDrawableCompat"/>
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/profile_coverbg_img"
-        android:scaleType="fitXY"
-        tools:ignore="VectorDrawableCompat"/>
+        tools:ignore="VectorDrawableCompat" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_img"
         android:layout_width="107dp"
         android:layout_height="107dp"
         android:background="@drawable/img_circular_bg"
-        android:padding="2dp"
+        android:padding="4dp"
         android:src="@mipmap/avatar"
         app:civ_border_color="#FF000000"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"

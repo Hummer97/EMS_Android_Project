@@ -5,8 +5,8 @@
     <color name="colorAccent">#ffffff</color>
 
     //-------------Theme color--------------
-    <color name="theme_color">#25378A</color>
-    <color name="theme_color_2">#09134A</color>
+    <color name="theme_color">#0069C0</color>
+    <color name="theme_color_2">#46A8FB</color>
 
     <color name="colorBlue1">#FFE405A5</color>
     <color name="colorWhite">#ffffff</color>
