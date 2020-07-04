@@ -11,7 +11,7 @@
         android:roundIcon="@drawable/addexpenses"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Login_page" android:theme="@style/StatusBarAppTheme"/>
+        <activity android:name=".Activities.Login_page"/>
         <activity android:name=".Activities.Registration_Form" android:theme="@style/StatusBarAppTheme"/>
         <activity android:name=".Activities.IntroActivity">
             <intent-filter>
@@ -23,7 +23,7 @@
         <activity android:name=".Activities.News" android:theme="@style/StatusBarAppTheme"/>
         <activity android:name=".Activities.Expenses" android:theme="@style/StatusBarAppTheme"/>
         <activity android:name=".Activities.Profile" />
-        <activity android:name=".Activities.Add_expenses" android:theme="@style/StatusBarAppTheme"/>
+        <activity android:name=".Activities.Add_expenses"/>
         <activity android:name=".Activities.Dashboard" android:theme="@style/StatusBarAppTheme"/>
         <activity android:name=".Activities.Create_Group" android:theme="@style/StatusBarAppTheme"/>
         <activity android:name=".Activities.MainActivity" android:theme="@style/StatusBarAppTheme"/>

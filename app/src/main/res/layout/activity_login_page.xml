@@ -4,182 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Login_page"
-    android:background="#fafafa">
+    android:background="#0D2331"
+    tools:context=".Activities.Login_page">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/theme_color"
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@mipmap/login_page" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </RelativeLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.42" />
-
-    <RelativeLayout
-        android:id="@+id/rl_login_container"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:background="@drawable/login_bg"
-        android:elevation="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/relativeLayout2"
-        app:layout_constraintVertical_bias="0.557">
-
-    </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/lg_logo_img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/home_logo"
-        android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/rl_login_container"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/relativeLayout2"
-        app:srcCompat="@drawable/ic_home_black_24dp" />
-
-    <TextView
-        android:id="@+id/lg_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="LOGIN"
-        android:translationZ="2dp"
-        android:textColor="@color/theme_color"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/rl_login_container"
-        app:layout_constraintStart_toStartOf="@+id/rl_login_container"
-        app:layout_constraintTop_toTopOf="@+id/rl_login_container" />
-
-    <TextView
-        android:id="@+id/lg_user_tx"
-        android:textColor="@color/theme_color"
-        android:textStyle="bold"
-        android:textSize="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="User ID:"
-        android:translationZ="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/lg_userid"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rl_login_container" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        app:srcCompat="@mipmap/login_logo" />
 
     <EditText
         android:id="@+id/lg_userid"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/txt_input_login_bg"
-        android:padding="10dp"
-        android:translationZ="2dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Enter User Id"
-        android:textColorHint="@color/tab_indicator_gray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/rl_login_container"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rl_login_container"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.06999999" />
-
-    <TextView
-        android:id="@+id/lg_pass_tx"
-        android:textColor="@color/theme_color"
-        android:textStyle="bold"
-        android:textSize="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="Password:"
-        android:translationZ="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/lg_password"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="@color/colorWhite"
+        android:ems="12"
+        android:hint="User ID"
+        android:inputType="textPersonName"
+        android:paddingTop="10dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="15dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="#F4F3F3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rl_login_container"
-        app:layout_constraintTop_toBottomOf="@+id/lg_userid"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <EditText
         android:id="@+id/lg_password"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:ems="10"
-        android:background="@drawable/txt_input_login_bg"
-        android:padding="10dp"
-        android:translationZ="2dp"
+        android:backgroundTint="@color/colorWhite"
+        android:ems="12"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:hint="*******"
-        android:textColorHint="@color/tab_indicator_gray"
-        app:layout_constraintBottom_toBottomOf="@+id/rl_login_container"
-        app:layout_constraintEnd_toEndOf="@+id/rl_login_container"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rl_login_container"
-        app:layout_constraintTop_toBottomOf="@+id/lg_userid"
-        app:layout_constraintVertical_bias="0.39" />
+        android:paddingTop="10dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="15dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="#F4F3F3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lg_userid" />
 
     <Button
         android:id="@+id/lg_btn"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/btn_bg"
         android:elevation="10dp"
-        android:background="@drawable/btn_gradient_style"
+        android:ems="12"
         android:text="LogIn"
         android:textColor="@color/colorWhite"
         android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/rl_login_container"
-        app:layout_constraintEnd_toEndOf="@+id/rl_login_container"
-        app:layout_constraintStart_toStartOf="@+id/rl_login_container"
-        app:layout_constraintTop_toBottomOf="@+id/rl_login_container" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lg_password" />
 
     <TextView
         android:id="@+id/lg_forgot_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:text="Forgot Password?"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lg_btn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/lg_btn" />
 
     <ProgressBar
         android:id="@+id/lg_progressbar"
@@ -190,5 +118,19 @@
         app:layout_constraintEnd_toEndOf="@+id/lg_btn"
         app:layout_constraintStart_toStartOf="@+id/lg_btn"
         app:layout_constraintTop_toTopOf="@+id/lg_btn" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.52" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

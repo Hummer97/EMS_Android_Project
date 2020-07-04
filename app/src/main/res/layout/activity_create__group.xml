@@ -4,15 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/create_group"
     tools:context="com.roy.Expenses_Management_System.Activities.Create_Group">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/create_group"
+            tools:ignore="VectorDrawableCompat" />
+    </FrameLayout>
 
     <Button
         android:id="@+id/rg_group_create_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/btn_bg"
@@ -56,12 +72,16 @@
         android:id="@+id/rg_group_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/txt_input_bg"
+        android:ems="15"
         android:hint="Group Name"
         android:inputType="textPersonName"
         android:padding="15dp"
-        android:ems="15"
         android:textColor="@color/txt_input_bgcolor"
         android:textColorHint="@color/tab_indicator_gray"
         app:layout_constraintBottom_toTopOf="@+id/rg_group_size"
