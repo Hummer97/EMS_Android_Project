@@ -41,7 +41,7 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Create_Group extends AppCompatActivity implements View.OnClickListener {
+public class Create_Group extends AppCompatActivity{
     CircleImageView rg_img;
     static int PReqCode=1;
     static int REQUESCODE=1;
@@ -71,8 +71,8 @@ public class Create_Group extends AppCompatActivity implements View.OnClickListe
                 regBtn.setVisibility(View.INVISIBLE);
                 loadProgress.setVisibility(View.VISIBLE);
 
-                final String group_name = rg_group_name.getText().toString();
-                final String group_size = rg_group_size.getText().toString();
+                final String group_name = rg_group_name.getText().toString().trim();
+                final String group_size = rg_group_size.getText().toString().trim();
                 //final int size_group = Integer.parseInt(group_size);    We use it later
 
                 if(group_name.isEmpty() || group_size.isEmpty())
@@ -98,22 +98,6 @@ public class Create_Group extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
-
-//        rg_img = (CircleImageView) findViewById(R.id.rg_img);
-//
-//        rg_img.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(Build.VERSION.SDK_INT>=22)
-//                {
-//                    checkAndRequestForPermission();
-//                }
-//                else
-//                {
-//                    openGallery();
-//                }
-//            }
-//        });
 
     }
 
@@ -147,52 +131,5 @@ public class Create_Group extends AppCompatActivity implements View.OnClickListe
 
         Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
 
-    }
-
-    private void openGallery() {
-        //TODO: open gallery intent and wait for user to pick an image
-        Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
-        galleryIntent.setType("image/*");
-        startActivityForResult(galleryIntent,REQUESCODE);
-    }
-
-    private void checkAndRequestForPermission() {
-
-        if(ContextCompat.checkSelfPermission(Create_Group.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-        {
-            if(ActivityCompat.shouldShowRequestPermissionRationale(Create_Group.this,Manifest.permission.READ_EXTERNAL_STORAGE))
-            {
-                Toast.makeText(Create_Group.this,"Please accept for required permission",Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                ActivityCompat.requestPermissions(Create_Group.this,
-                                                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},PReqCode);
-            }
-        }
-        else
-        {
-            openGallery();
-        }
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK && requestCode == REQUESCODE && data != null)
-        {
-            //The user has successfully picked image
-            // We need to save its reference to the Uri variable
-            PickedImgUri = data.getData();
-            rg_img.setImageURI(PickedImgUri);
-        }
-    }
-
-    @Override
-    public void onClick(View view){
-        Intent intent=new Intent(Create_Group.this, Registration_Form.class);
-        startActivity(intent);
     }
 }

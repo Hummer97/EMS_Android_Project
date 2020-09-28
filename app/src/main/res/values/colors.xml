@@ -33,4 +33,7 @@
     <color name="intro_title_color">#000000</color>
     <color name="intro_description_color">#656565</color>
 
+    //--------------DashBoard Transparent---------------
+    <color name="dashboard_icon_transparent">#03000000</color>
+
 </resources>

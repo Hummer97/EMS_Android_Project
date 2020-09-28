@@ -1,5 +1,6 @@
 package com.roy.Expenses_Management_System.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,7 +13,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.roy.Expenses_Management_System.Models.RegesterUser;
@@ -40,6 +45,7 @@ public class Registration_Form extends AppCompatActivity {
     private FirebaseDatabase mDatabase;
     private DatabaseReference ref;
     private CircleImageView userImg;
+    private FirebaseAuth mAuth;
     static int n;
     static String catchMail;
     static int i=1;
@@ -64,6 +70,7 @@ public class Registration_Form extends AppCompatActivity {
         loadingProgressBar.setVisibility(View.INVISIBLE);
 
         mDatabase = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         final Intent intent = getIntent();
         final String group_key = intent.getExtras().getString("Group_key");
@@ -82,19 +89,32 @@ public class Registration_Form extends AppCompatActivity {
                     loadingProgressBar.setVisibility(View.VISIBLE);
                     usrRegbtn.setVisibility(View.INVISIBLE);
 
-                    final String user_name = userName.getText().toString();
-                    final String mobile_no = mobileNo.getText().toString();
-                    final String mail = email.getText().toString();
-                    final String confirm_mail = confirmMail.getText().toString();
+                    final String user_name = userName.getText().toString().trim();
+                    final String mobile_no = mobileNo.getText().toString().trim();
+                    final String mail = email.getText().toString().trim();
+                    final String confirm_mail = confirmMail.getText().toString().trim();
                     final int group_size_int = Integer.parseInt(group_size);
+                    final String password = "ems@12345".trim();
                     n=group_size_int;
-                    catchMail = mail.trim();
+                    catchMail = mail;
 
 
                     if (!user_name.isEmpty() && !mobile_no.isEmpty() && !mail.isEmpty() && !confirm_mail.isEmpty()) {
                         if (mail.equals(confirm_mail)) {
-                            RegesterUser regesterUser = new RegesterUser(user_name, mobile_no, mail, group_key);
-                            addUser(regesterUser);
+
+
+                            mAuth.createUserWithEmailAndPassword(mail, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                    if(task.isSuccessful())
+                                    {
+                                        RegesterUser regesterUser = new RegesterUser(user_name, mobile_no, group_key);
+                                        addUser(regesterUser);
+                                    }
+                                }
+                            });
+
 //                            for(int i = 1; i<group_size_int; i++)
 //                            {
 //                                Intent itself = new Intent(Registration_Form.this,Registration_Form.class);
@@ -120,11 +140,13 @@ public class Registration_Form extends AppCompatActivity {
     }
 
     private void addUser(RegesterUser regesterUser) {
-        ref = mDatabase.getReference("Users").push();
-        String key = ref.getKey();
+        ref = mDatabase.getReference("Users");
+        String key = mAuth.getCurrentUser().getUid();
         regesterUser.setUser_key(key);
+        DatabaseReference current_user_ref = ref.child(key);
 
-        ref.setValue(regesterUser).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+        current_user_ref.setValue(regesterUser).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 sendMailToUser(sEmail,sPassword,catchMail);
@@ -168,6 +190,7 @@ public class Registration_Form extends AppCompatActivity {
 
         try
         {
+
             //Initialize email content
             Message message = new MimeMessage(session);
             //Sender email
@@ -186,7 +209,7 @@ public class Registration_Form extends AppCompatActivity {
                     "                <p style=\"font-family: sans-serif;font-size: 16px;\"><b>Important account information - save for your records.</b></p>\n" +
                     "                <div style=\"margin:10px;padding: 15px;color: white;border:2px solid cyan;margin: auto;text-align: center;\">\n" +
                     "                    <h2>Customer ID</h2>\n" +
-                    "                    <h2>"+genID+"</h2>\n" +
+                    "                    <h2>"+catchMail+"</h2>\n" +
                     "                </div><br>\n" +
                     "                <div style=\"padding: 15px;color: white;border: 2px solid cyan;margin: auto;text-align: center;\">\n" +
                     "                    <h2>Password</h2>\n" +
@@ -207,6 +230,8 @@ public class Registration_Form extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    // Generate the Random number for user ID
     public static long generateRandom(int length) {
         Random random = new Random();
         char[] digits = new char[length];

@@ -32,7 +32,7 @@
         app:srcCompat="@mipmap/login_logo" />
 
     <EditText
-        android:id="@+id/lg_userid"
+        android:id="@+id/lg_userId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -43,7 +43,7 @@
         android:backgroundTint="@color/colorWhite"
         android:ems="12"
         android:hint="User ID"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:paddingTop="10dp"
         android:paddingRight="5dp"
         android:paddingBottom="15dp"
@@ -73,7 +73,7 @@
         android:textColorHint="#F4F3F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lg_userid" />
+        app:layout_constraintTop_toBottomOf="@+id/lg_userId" />
 
     <Button
         android:id="@+id/lg_btn"

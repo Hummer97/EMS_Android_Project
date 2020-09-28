@@ -6,13 +6,12 @@ import java.sql.Timestamp;
 
 public class RegesterUser {
 
-    private String User_name,Mobile_No,Email,User_key,Group_ID;
+    private String User_name,Mobile_No,User_key,Group_ID;
     private Object timeStamp;
 
-    public RegesterUser(String user_name, String mobile_No, String email, String group_ID) {
+    public RegesterUser(String user_name, String mobile_No,  String group_ID) {
         User_name = user_name;
         Mobile_No = mobile_No;
-        Email = email;
         Group_ID = group_ID;
         timeStamp = ServerValue.TIMESTAMP;
     }
@@ -25,9 +24,6 @@ public class RegesterUser {
         return Mobile_No;
     }
 
-    public String getEmail() {
-        return Email;
-    }
 
     public String getUser_key() {
         return User_key;
@@ -49,9 +45,6 @@ public class RegesterUser {
         Mobile_No = mobile_No;
     }
 
-    public void setEmail(String email) {
-        Email = email;
-    }
 
     public void setUser_key(String user_key) {
         User_key = user_key;
