@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home"
+            android:icon="@mipmap/group_icon"/>
+        <item
+            android:id="@+id/nav_add_expenses"
+            android:title="Add Expenses"
+            android:icon="@mipmap/group_icon"/>
+        <item
+            android:id="@+id/nav_all_expenses"
+            android:title="All Expenses"
+            android:icon="@mipmap/group_icon"/>
+        <item
+            android:id="@+id/nav_own_expenses"
+            android:title="Own Expenses"
+            android:icon="@mipmap/group_icon"/>
+        <item
+            android:id="@+id/nav_notification"
+            android:title="Notification"
+            android:icon="@mipmap/group_icon"/>
+    </group>
+        <item
+
+            android:title="Profile">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_profile"
+                        android:title="Profile"
+                        android:icon="@mipmap/group_icon"/>
+                    <item
+                        android:id="@+id/nav_logOnt"
+                        android:title="Log Out"
+                        android:icon="@mipmap/group_icon"/>
+
+                </group>
+            </menu>
+        </item>
+        <item
+
+            android:title="Others">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_setting"
+                        android:title="Settings"
+                        android:icon="@mipmap/group_icon"/>
+                </group>
+            </menu>
+        </item>
+</menu>

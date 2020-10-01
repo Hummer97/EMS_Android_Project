@@ -5,4 +5,6 @@
     <string name="GroupSize">Group Size</string>
     <string name="UserName" translatable="false">Avinash Roy</string>
     <string name="UserIdView" translatable="false">ID 198730992</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

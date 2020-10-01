@@ -24,7 +24,7 @@
         <activity android:name=".Activities.Expenses" android:theme="@style/StatusBarAppTheme"/>
         <activity android:name=".Activities.Profile" />
         <activity android:name=".Activities.Add_expenses"/>
-        <activity android:name=".Activities.Dashboard" android:theme="@style/StatusBarAppTheme"/>
+        <activity android:name=".Activities.Dashboard" android:theme="@style/AppTheme.Transparent.StatusBar"/>
         <activity android:name=".Activities.Create_Group" android:theme="@style/StatusBarAppTheme"/>
         <activity android:name=".Activities.MainActivity" android:theme="@style/StatusBarAppTheme"/>
     </application>

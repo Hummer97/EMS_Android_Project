@@ -1,359 +1,342 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0D2331"
-    tools:context="com.roy.Expenses_Management_System.Activities.Dashboard">
+    android:background="@drawable/main_page"
+    tools:context="com.roy.Expenses_Management_System.Activities.MainActivity"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:id="@+id/nav_view"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/main_menu"
+        android:layout_gravity="start"
         android:background="#0D2331"
-        android:orientation="vertical">
+        app:itemTextColor="@color/colorWhite"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="278dp"
-            android:background="@drawable/dash_board_top_bg">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.20" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="28dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline6"
-                app:layout_constraintVertical_bias="0.25">
 
-                <TextView
-                    android:id="@+id/dashBoardId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="DashBoard"
-                    android:textColor="#000000"
-                    android:textSize="28sp"
-                    android:textStyle="bold"></TextView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/dashBoardId"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginTop="-1dp"
-                    android:text="Expenses"
-                    android:textColor="#000000"></TextView>
-
-                <ImageView
-                    android:layout_width="82dp"
-                    android:layout_height="82dp"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/avatar"></ImageView>
-
-            </RelativeLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <GridLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/dashboard_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alignmentMode="alignMargins"
-            android:columnCount="2"
-            android:columnOrderPreserved="false"
-            android:rowCount="3">
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/sidebar_menu" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:background="#0B1820"
-                android:layout_margin="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+        <ScrollView
+            android:id="@+id/dashboard_scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#0D2331"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_toolbar">
 
-                <LinearLayout
-                    android:id="@+id/profile"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:background="#0D2331"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:background="#0B1820"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:layout_height="250dp"
+                    android:background="@drawable/dash_board_top_bg">
 
-                    <ImageView
-                        android:id="@+id/iamge1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/profile"></ImageView>
-
-                    <TextView
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Profile"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"></TextView>
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.0" />
 
-                </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="28dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/guideline6"
+                        app:layout_constraintVertical_bias="0.25">
 
-            </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/dashBoardId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="134dp"
+                            android:layout_marginRight="134dp"
+                            android:text="DashBoard"
+                            android:textColor="#000000"
+                            android:textSize="28sp"
+                            android:textStyle="bold"></TextView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:background="#0B1820"
-                android:layout_margin="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/dashBoardId"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginTop="-1dp"
+                            android:text="Expenses"
+                            android:textColor="#000000"></TextView>
 
-                <LinearLayout
-                    android:id="@+id/allExpense"
+                        <ImageView
+                            android:layout_width="82dp"
+                            android:layout_height="82dp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/avatar"></ImageView>
+
+                    </RelativeLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <GridLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:background="#0B1820"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:layout_height="wrap_content"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="2"
+                    android:columnOrderPreserved="false"
+                    android:rowCount="3">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/iconfinder_32_3319612"></ImageView>
-
-                    <TextView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="All Expenses"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"></TextView>
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:background="#0B1820"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#0B1820"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
-            </androidx.cardview.widget.CardView>
+                            <ImageView
+                                android:id="@+id/iamge1"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/profile"></ImageView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:background="#0B1820"
-                android:layout_margin="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="Profile"
+                                android:textColor="#6f6f6f"
+                                android:textSize="18sp"></TextView>
 
-                <LinearLayout
-                    android:id="@+id/AddExpenses"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:background="#0B1820"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                        </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/iconfinder_3_3319636"></ImageView>
+                    </androidx.cardview.widget.CardView>
 
-                    <TextView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Add Expenses"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"></TextView>
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:background="#0B1820"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/allExpense"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#0B1820"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
-            </androidx.cardview.widget.CardView>
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/iconfinder_32_3319612"></ImageView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:background="#0B1820"
-                android:layout_margin="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="All Expenses"
+                                android:textColor="#6f6f6f"
+                                android:textSize="18sp"></TextView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:background="#0B1820"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                        </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/iconfinder_12_3319602"></ImageView>
+                    </androidx.cardview.widget.CardView>
 
-                    <TextView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Own Expenses"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"></TextView>
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:background="#0B1820"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/AddExpenses"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#0B1820"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
-            </androidx.cardview.widget.CardView>
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/iconfinder_3_3319636"></ImageView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:background="#0B1820"
-                android:layout_margin="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="Add Expenses"
+                                android:textColor="#6f6f6f"
+                                android:textSize="18sp"></TextView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:background="#0B1820"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                        </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/iconfinder_6_3319634"></ImageView>
+                    </androidx.cardview.widget.CardView>
 
-                    <TextView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Receipts"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"></TextView>
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:background="#0B1820"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#0B1820"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
-            </androidx.cardview.widget.CardView>
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/iconfinder_12_3319602"></ImageView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:background="#0B1820"
-                android:layout_margin="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="Own Expenses"
+                                android:textColor="#6f6f6f"
+                                android:textSize="18sp"></TextView>
 
-                <LinearLayout
-                    android:id="@+id/News"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:background="#0B1820"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                        </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/iconfinder_46_3319595"></ImageView>
+                    </androidx.cardview.widget.CardView>
 
-                    <TextView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Notifications"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"></TextView>
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:background="#0B1820"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#0B1820"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
-            </androidx.cardview.widget.CardView>
-            <!--            <androidx.cardview.widget.CardView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_columnWeight="1"-->
-            <!--                android:layout_rowWeight="1"-->
-            <!--                app:cardElevation="6dp"-->
-            <!--                app:cardCornerRadius="12dp"-->
-            <!--                android:layout_margin="12dp">-->
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/iconfinder_6_3319634"></ImageView>
 
-            <!--                <LinearLayout-->
-            <!--                    android:orientation="vertical"-->
-            <!--                    android:padding="16dp"-->
-            <!--                    android:gravity="center"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="match_parent">-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="Receipts"
+                                android:textColor="#6f6f6f"
+                                android:textSize="18sp"></TextView>
 
-            <!--                    <ImageView-->
-            <!--                        android:src="@drawable/profile"-->
-            <!--                        android:layout_width="80dp"-->
-            <!--                        android:layout_height="80dp">-->
-            <!--                    </ImageView>-->
-            <!--                    <TextView-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:text="Profile"-->
-            <!--                        android:textSize="18sp"-->
-            <!--                        android:textColor="#6f6f6f"-->
-            <!--                        android:layout_marginTop="12dp"></TextView>-->
+                        </LinearLayout>
 
-            <!--                </LinearLayout>-->
+                    </androidx.cardview.widget.CardView>
 
-            <!--            </androidx.cardview.widget.CardView>-->
-            <!--            <androidx.cardview.widget.CardView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_columnWeight="1"-->
-            <!--                android:layout_rowWeight="1"-->
-            <!--                app:cardElevation="6dp"-->
-            <!--                app:cardCornerRadius="12dp"-->
-            <!--                android:layout_margin="12dp">-->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:background="#0B1820"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
 
-            <!--                <LinearLayout-->
-            <!--                    android:orientation="vertical"-->
-            <!--                    android:padding="16dp"-->
-            <!--                    android:gravity="center"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="match_parent">-->
+                        <LinearLayout
+                            android:id="@+id/News"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#0B1820"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
-            <!--                    <ImageView-->
-            <!--                        android:src="@drawable/profile"-->
-            <!--                        android:layout_width="80dp"-->
-            <!--                        android:layout_height="80dp">-->
-            <!--                    </ImageView>-->
-            <!--                    <TextView-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:text="Profile"-->
-            <!--                        android:textSize="18sp"-->
-            <!--                        android:textColor="#6f6f6f"-->
-            <!--                        android:layout_marginTop="12dp"></TextView>-->
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/iconfinder_46_3319595"></ImageView>
 
-            <!--                </LinearLayout>-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="Notifications"
+                                android:textColor="#6f6f6f"
+                                android:textSize="18sp"></TextView>
 
-            <!--            </androidx.cardview.widget.CardView>-->
-        </GridLayout>
+                        </LinearLayout>
 
-    </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </GridLayout>
 
-</ScrollView>
+            </LinearLayout>
+
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

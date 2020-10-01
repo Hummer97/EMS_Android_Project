@@ -44,17 +44,6 @@ public class Login_page extends AppCompatActivity {
         mlogin_UserField = (EditText) findViewById(R.id.lg_userId);
         mlogin_PasswordField = (EditText) findViewById(R.id.lg_password);
         mProgressDialog = new ProgressDialog(Login_page.this);
-//        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                Intent loginIntent = new Intent(Login_page.this, Dashboard.class);
-//                loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(loginIntent);
-//            }
-//        };
-
-
-       // mAuth.addAuthStateListener(mAuthStateListener);
         mlogin_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
