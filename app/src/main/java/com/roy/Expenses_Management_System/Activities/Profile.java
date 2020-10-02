@@ -36,7 +36,6 @@ public class Profile extends AppCompatActivity {
         mProfile_User_GroupName = findViewById(R.id.profile_groupName);
         mProfile_UserMobileNo = findViewById(R.id.profile_userMobileNo);
         mUserMail = findViewById(R.id.profile_userMail);
-        mUserID = findViewById(R.id.profile_userID);
         mProfilePic = findViewById(R.id.profile_userPic);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
@@ -54,6 +53,7 @@ public class Profile extends AppCompatActivity {
 
 
                         mProfile_UserName.setText(name);
+                        mUserMail.setText(mCurrentMailID);
                         mProfile_UserMobileNo.setText(mobileNo);
 
             }
@@ -63,7 +63,7 @@ public class Profile extends AppCompatActivity {
 
             }
         });
-        mUserMail.setText(mCurrentMailID);
+
 
     }
 
