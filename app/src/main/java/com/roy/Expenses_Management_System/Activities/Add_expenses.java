@@ -32,15 +32,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Add_expenses extends AppCompatActivity {
+public class Add_expenses extends AppCompatActivity implements ValueEventListener {
     private EditText mAdd_exp_details,mAdd_exp_price,mAdd_exp_date;
     private Button mAdd_exp_btn;
-    private int mYear,mMonth,mDay;
     private DatePickerDialog mDatePickerDialog;
     private FirebaseUser mUser;
     private FirebaseAuth mAuth;
-    private FirebaseDatabase mDatabase;
-    private DatabaseReference mReference;
+    private FirebaseDatabase mDatabase= FirebaseDatabase.getInstance();
+    private DatabaseReference mReference = mDatabase.getReference();
+    private DatabaseReference mGroupIDReference;
     private String mCurrentUserID,mCurrentGroupID;
     private ProgressDialog mProgressDialog;
 
@@ -55,7 +55,6 @@ public class Add_expenses extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance();
         mProgressDialog = new ProgressDialog(Add_expenses.this);
 
 
@@ -69,36 +68,9 @@ public class Add_expenses extends AppCompatActivity {
                 return false;
             }
         });
-
-
-
-        mAdd_exp_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String expense_detail = mAdd_exp_details.getText().toString().trim();
-                final String expense_price = mAdd_exp_price.getText().toString().trim();
-                final String expense_date = mAdd_exp_date.getText().toString().trim();
-                if(!TextUtils.isEmpty(expense_detail) && !TextUtils.isEmpty(expense_price) && !TextUtils.isEmpty(expense_date))
-                {
-                    mProgressDialog.setMessage("Please Wait...");
-                    mProgressDialog.show();
-                    // get user_key and group_key
-                    getUserAndGroupKey();
-
-                    AddExpensesModel addExpensesModel = new AddExpensesModel(mCurrentGroupID,mCurrentUserID,expense_detail,expense_price,expense_date);
-                    addExpenseData(addExpensesModel);
-                }
-                else
-                {
-                    showMessage("Please Fill the all field");
-                }
-            }
-
-
-        });
-
-
-
+        // get user_key and group_key
+        mCurrentUserID = mUser.getUid();
+        mGroupIDReference = mReference.child("Users").child(mCurrentUserID).child("group_ID");
 
     }
 
@@ -124,23 +96,6 @@ public class Add_expenses extends AppCompatActivity {
 
     }
 
-    private void getUserAndGroupKey() {
-        mReference = mDatabase.getReference("Users");
-        mCurrentUserID = mUser.getUid();
-        mReference.child(mCurrentUserID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mCurrentGroupID = dataSnapshot.child("group_ID").getValue().toString();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-
     // Date Picker
     private void setDateTimeField() {
 
@@ -162,6 +117,55 @@ public class Add_expenses extends AppCompatActivity {
         mDatePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
     }
 
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            if (dataSnapshot.getValue(String.class)!=null)
+            {
+                String key = dataSnapshot.getKey();
+                if (key.equals("group_ID"))
+                {
+                    mCurrentGroupID = dataSnapshot.getValue(String.class);
+                }
+            }
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        mGroupIDReference.addValueEventListener(this);
+
+        mAdd_exp_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String expense_detail = mAdd_exp_details.getText().toString().trim();
+                final String expense_price = mAdd_exp_price.getText().toString().trim();
+                final String expense_date = mAdd_exp_date.getText().toString().trim();
+                if(!TextUtils.isEmpty(expense_detail) && !TextUtils.isEmpty(expense_price) && !TextUtils.isEmpty(expense_date))
+                {
+                    mProgressDialog.setMessage("Please Wait...");
+                    mProgressDialog.show();
+
+
+
+                    AddExpensesModel addExpensesModel = new AddExpensesModel(mCurrentGroupID, mCurrentUserID, expense_detail, expense_price, expense_date);
+                    addExpenseData(addExpensesModel);
+                }
+                else
+                {
+                    showMessage("Please Fill the all field");
+                }
+            }
+
+
+        });
+
+    }
 }
 
 
