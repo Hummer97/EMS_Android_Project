@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ import java.util.Date;
 
 public class Add_expenses extends AppCompatActivity implements ValueEventListener {
     private EditText mAdd_exp_details,mAdd_exp_price,mAdd_exp_date;
+    private TextView mShow_Group_Name,mShow_UserName;
     private Button mAdd_exp_btn;
     private DatePickerDialog mDatePickerDialog;
     private FirebaseUser mUser;
@@ -41,6 +43,7 @@ public class Add_expenses extends AppCompatActivity implements ValueEventListene
     private FirebaseDatabase mDatabase= FirebaseDatabase.getInstance();
     private DatabaseReference mReference = mDatabase.getReference();
     private DatabaseReference mGroupIDReference;
+    private DatabaseReference mUsersReference,mGroupNameReference;
     private String mCurrentUserID,mCurrentGroupID;
     private ProgressDialog mProgressDialog;
 
@@ -52,7 +55,8 @@ public class Add_expenses extends AppCompatActivity implements ValueEventListene
         mAdd_exp_btn = findViewById(R.id.add_expense_btn);
         mAdd_exp_details = findViewById(R.id.add_expense_details);
         mAdd_exp_price = findViewById(R.id.add_expense_price);
-
+        mShow_Group_Name = findViewById(R.id.show_GroupName);
+        mShow_UserName = findViewById(R.id.show_UserName);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mProgressDialog = new ProgressDialog(Add_expenses.this);
@@ -71,6 +75,8 @@ public class Add_expenses extends AppCompatActivity implements ValueEventListene
         // get user_key and group_key
         mCurrentUserID = mUser.getUid();
         mGroupIDReference = mReference.child("Users").child(mCurrentUserID).child("group_ID");
+        mUsersReference = mReference.child("Users").child(mCurrentUserID).child("user_name");
+        mGroupNameReference = mReference.child("Users").child(mCurrentUserID).child("group_Name");
 
     }
 
@@ -125,6 +131,15 @@ public class Add_expenses extends AppCompatActivity implements ValueEventListene
                 if (key.equals("group_ID"))
                 {
                     mCurrentGroupID = dataSnapshot.getValue(String.class);
+                }if (key.equals("user_name"))
+                {
+                    String UserName = dataSnapshot.getValue(String.class);
+                    mShow_UserName.setText(UserName);
+                }
+                if (key.equals("group_Name"))
+                {
+                    String groupName = dataSnapshot.getValue(String.class);
+                    mShow_Group_Name.setText(groupName);
                 }
             }
     }
@@ -139,6 +154,8 @@ public class Add_expenses extends AppCompatActivity implements ValueEventListene
     {
         super.onStart();
         mGroupIDReference.addValueEventListener(this);
+        mGroupNameReference.addValueEventListener(this);
+        mUsersReference.addValueEventListener(this);
 
         mAdd_exp_btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.News" android:theme="@style/StatusBarAppTheme"/>
-        <activity android:name=".Activities.Expenses" android:theme="@style/StatusBarAppTheme"/>
+        <activity android:name=".Activities.Expenses"/>
         <activity android:name=".Activities.Profile" />
         <activity android:name=".Activities.Add_expenses"/>
         <activity android:name=".Activities.Dashboard" android:theme="@style/AppTheme.Transparent.StatusBar"/>

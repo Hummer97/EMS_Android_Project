@@ -75,6 +75,7 @@ public class Registration_Form extends AppCompatActivity {
         final Intent intent = getIntent();
         final String group_key = intent.getExtras().getString("Group_key");
         final String group_size = intent.getExtras().getString("Group_size");
+        final String group_name = intent.getExtras().getString("Group_Name");
 
 
         // Sender mail credential
@@ -109,7 +110,7 @@ public class Registration_Form extends AppCompatActivity {
 
                                     if(task.isSuccessful())
                                     {
-                                        RegesterUser regesterUser = new RegesterUser(user_name, mobile_no, group_key);
+                                        RegesterUser regesterUser = new RegesterUser(user_name, mobile_no, group_key,group_name);
                                         addUser(regesterUser);
                                     }
                                 }
@@ -160,7 +161,6 @@ public class Registration_Form extends AppCompatActivity {
 
                     loadingProgressBar.setVisibility(View.INVISIBLE);
                     usrRegbtn.setVisibility(View.VISIBLE);
-
                     i++;
                 }
             }

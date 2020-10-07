@@ -103,6 +103,7 @@ public class Create_Group extends AppCompatActivity{
 
     private void addGroup(CreateGroup createGroup) {
         final String groupSize = rg_group_size.getText().toString();
+        final String groupName = rg_group_name.getText().toString();
         reference = mDatabase.getReference("Groups").push();
         //Get Group unique id and update group key
         final String key = reference.getKey();
@@ -114,7 +115,7 @@ public class Create_Group extends AppCompatActivity{
             public void onSuccess(Void aVoid) {
 
                 Intent i = new Intent(Create_Group.this, Registration_Form.class);
-                i.putExtra("Group_key",key).putExtra("Group_size",groupSize);
+                i.putExtra("Group_key",key).putExtra("Group_size",groupSize).putExtra("Group_Name",groupName);
                 startActivity(i);
                 Toast.makeText(Create_Group.this, "Successfully Inserted", Toast.LENGTH_SHORT).show();
                 loadProgress.setVisibility(View.GONE);

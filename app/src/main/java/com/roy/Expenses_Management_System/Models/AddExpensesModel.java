@@ -8,6 +8,10 @@ public class AddExpensesModel {
     private String expense_price;
     private String added_date;
 
+    AddExpensesModel()
+    {
+
+    }
     public AddExpensesModel(String group_ID, String user_ID, String expense_details, String expense_price, String added_date) {
         this.group_ID = group_ID;
         this.user_ID = user_ID;
