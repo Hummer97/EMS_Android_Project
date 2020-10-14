@@ -54,7 +54,6 @@ public class Expenses extends AppCompatActivity{
              @Override
              public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                  String group_id = dataSnapshot.getValue().toString().trim();
-
              }
 
              @Override
@@ -87,6 +86,4 @@ public class Expenses extends AppCompatActivity{
         super.onStop();
         expensesAdapter.stopListening();
     }
-
-
 }

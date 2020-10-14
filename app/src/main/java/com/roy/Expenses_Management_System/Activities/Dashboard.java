@@ -22,7 +22,7 @@ import java.time.Instant;
 public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private View addExpenses;
-    private View allExpense;
+    private View allExpense, ownExpense;
     private View profile;
     private View news;
     private FirebaseAuth mAuth;
@@ -37,6 +37,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         setContentView(R.layout.activity_dashboard);
         addExpenses = (LinearLayout) findViewById(R.id.AddExpenses);
         allExpense = (LinearLayout) findViewById(R.id.allExpense);
+        ownExpense = (LinearLayout) findViewById(R.id.OwnExpenses);
         profile = (LinearLayout) findViewById(R.id.profile);
         news = (LinearLayout) findViewById(R.id.News);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -96,6 +97,13 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             }
         });
         allExpense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Dashboard.this, Expenses.class);
+                startActivity(intent);
+            }
+        });
+        ownExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, Expenses.class);
