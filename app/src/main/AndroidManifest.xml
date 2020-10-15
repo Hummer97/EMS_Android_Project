@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.roy.Expenses_Management_System">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,8 +12,10 @@
         android:roundIcon="@drawable/addexpenses"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Login_page"/>
-        <activity android:name=".Activities.Registration_Form" android:theme="@style/StatusBarAppTheme"/>
+        <activity android:name=".Activities.Login_page" />
+        <activity
+            android:name=".Activities.Registration_Form"
+            android:theme="@style/StatusBarAppTheme" />
         <activity android:name=".Activities.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,13 +23,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.News" android:theme="@style/StatusBarAppTheme"/>
-        <activity android:name=".Activities.Expenses"/>
+        <activity
+            android:name=".Activities.News"
+            android:theme="@style/StatusBarAppTheme" />
+        <activity android:name=".Activities.Expenses" />
         <activity android:name=".Activities.Profile" />
-        <activity android:name=".Activities.Add_expenses"/>
-        <activity android:name=".Activities.Dashboard" android:theme="@style/AppTheme.Transparent.StatusBar"/>
-        <activity android:name=".Activities.Create_Group" android:theme="@style/StatusBarAppTheme"/>
-        <activity android:name=".Activities.MainActivity" android:theme="@style/StatusBarAppTheme"/>
+        <activity android:name=".Activities.Add_expenses" />
+        <activity
+            android:name=".Activities.Dashboard"
+            android:theme="@style/AppTheme.Transparent.StatusBar" />
+        <activity
+            android:name=".Activities.Create_Group"
+            android:theme="@style/StatusBarAppTheme" />
+        <activity
+            android:name=".Activities.MainActivity"
+            android:theme="@style/StatusBarAppTheme" />
     </application>
 
 </manifest>
