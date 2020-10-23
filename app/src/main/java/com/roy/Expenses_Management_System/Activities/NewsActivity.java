@@ -13,7 +13,7 @@ import com.roy.Expenses_Management_System.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class News extends AppCompatActivity {
+public class NewsActivity extends AppCompatActivity {
 
     RecyclerView NewsRecyclerView;
     com.roy.Expenses_Management_System.Adapters.NewsAdapter NewsAdapter;

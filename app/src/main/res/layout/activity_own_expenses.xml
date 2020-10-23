@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    tools:context="com.roy.Expenses_Management_System.Activities.NewsActivity">
+    android:background="#0D2331"
+    tools:context=".Activities.OwnExpensesActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/news_rv"
+        android:id="@+id/own_expenses_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -9,17 +9,22 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.roy.Expenses_Management_System.R;
 
-import java.time.Instant;
-
-public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private View addExpenses;
     private View allExpense, ownExpense;
@@ -30,6 +35,10 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
     private Toolbar mToolbar;
+    private DatabaseReference mReference;
+    private DatabaseReference mGroupIDReference;
+    private FirebaseUser mUser;
+    private String mCurrentGroupID,mCurrentUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +53,17 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         mToolbar = findViewById(R.id.dashboard_toolbar);
 
+
+        mReference = FirebaseDatabase.getInstance().getReference("Users");
+
         mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        mCurrentUserID = mUser.getUid();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() == null) {
-                    Intent loginIntent = new Intent(Dashboard.this, MainActivity.class);
+                    Intent loginIntent = new Intent(DashboardActivity.this, MainActivity.class);
                     loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(loginIntent);
                 }
@@ -84,7 +98,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard.this, Profile.class);
+                Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
         });
@@ -92,29 +106,66 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         addExpenses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard.this, Add_expenses.class);
+                Intent intent = new Intent(DashboardActivity.this, Add_expensesActivity.class);
                 startActivity(intent);
             }
         });
         allExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard.this, Expenses.class);
-                startActivity(intent);
+                getUserGroupID();
             }
         });
         ownExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard.this, Expenses.class);
-                startActivity(intent);
+                getUserGroupIDForOwnExpenses();
             }
         });
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard.this, News.class);
+                Intent intent = new Intent(DashboardActivity.this, NewsActivity.class);
                 startActivity(intent);
+            }
+        });
+    }
+
+    private void getUserGroupID() {
+        Log.d(getLocalClassName(),"mCurrentGroupID : "+mCurrentGroupID);
+        mGroupIDReference = mReference.child(mCurrentUserID).child("group_ID");
+        mGroupIDReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mCurrentGroupID = dataSnapshot.getValue().toString().trim();
+                Log.d(getLocalClassName(),"mCurrentGroupID : "+mCurrentGroupID);
+                Intent intent = new Intent(DashboardActivity.this, ExpensesActivity.class);
+                intent.putExtra("groupID",mCurrentGroupID);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void getUserGroupIDForOwnExpenses() {
+        Log.d(getLocalClassName(),"mCurrentGroupID : "+mCurrentGroupID);
+        mGroupIDReference = mReference.child(mCurrentUserID).child("group_ID");
+        mGroupIDReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mCurrentGroupID = dataSnapshot.getValue().toString().trim();
+                Log.d(getLocalClassName(),"mCurrentGroupID : "+mCurrentGroupID);
+                Intent intent = new Intent(DashboardActivity.this, OwnExpensesActivity.class);
+                intent.putExtra("groupID",mCurrentGroupID);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
@@ -136,21 +187,21 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             case R.id.nav_home:
                 break;
             case R.id.nav_add_expenses:
-                Intent add_expenses_intent = new Intent(Dashboard.this,Add_expenses.class);
+                Intent add_expenses_intent = new Intent(DashboardActivity.this, Add_expensesActivity.class);
                 startActivity(add_expenses_intent);
                 break;
             case R.id.nav_all_expenses:
-                Intent all_expenses_intent = new Intent(Dashboard.this,Expenses.class);
+                Intent all_expenses_intent = new Intent(DashboardActivity.this, ExpensesActivity.class);
                 startActivity(all_expenses_intent);
                 break;
             case R.id.nav_own_expenses:
                 break;
             case R.id.nav_notification:
-                Intent notification_intent = new Intent(Dashboard.this,News.class);
+                Intent notification_intent = new Intent(DashboardActivity.this, NewsActivity.class);
                 startActivity(notification_intent);
                 break;
             case R.id.nav_profile:
-                Intent profile_intent = new Intent(Dashboard.this,Profile.class);
+                Intent profile_intent = new Intent(DashboardActivity.this, ProfileActivity.class);
                 startActivity(profile_intent);
                 break;
             case R.id.nav_logOnt:

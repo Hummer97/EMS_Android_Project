@@ -37,7 +37,7 @@ import javax.mail.internet.MimeMessage;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Registration_Form extends AppCompatActivity {
+public class Registration_FormActivity extends AppCompatActivity {
 
     private EditText userName,mobileNo,email,confirmMail;
     private Button usrRegbtn;
@@ -153,7 +153,7 @@ public class Registration_Form extends AppCompatActivity {
                 sendMailToUser(sEmail,sPassword,catchMail);
                 if(i == n)
                 {
-                    startActivity(new Intent(Registration_Form.this,Login_page.class));
+                    startActivity(new Intent(Registration_FormActivity.this, Login_pageActivity.class));
                 }
                 else
                 {

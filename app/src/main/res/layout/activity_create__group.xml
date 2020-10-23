@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.roy.Expenses_Management_System.Activities.Create_Group">
+    tools:context="com.roy.Expenses_Management_System.Activities.Create_GroupActivity">
 
     <FrameLayout
         android:layout_width="match_parent"

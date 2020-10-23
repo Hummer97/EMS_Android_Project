@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
-                    Intent loginIntent = new Intent(MainActivity.this, Dashboard.class);
+                    Intent loginIntent = new Intent(MainActivity.this, DashboardActivity.class);
                     loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(loginIntent);
                 }
@@ -49,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
         clickMeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Create_Group.class);
+                Intent intent = new Intent(MainActivity.this, Create_GroupActivity.class);
                 startActivity(intent);
             }
         });
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Login_page.class);
+                Intent intent = new Intent(MainActivity.this, Login_pageActivity.class);
                 startActivity(intent);
             }
         });

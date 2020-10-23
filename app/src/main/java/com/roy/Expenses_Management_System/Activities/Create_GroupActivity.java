@@ -1,47 +1,28 @@
 package com.roy.Expenses_Management_System.Activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.roy.Expenses_Management_System.Models.CreateGroup;
-import com.roy.Expenses_Management_System.Models.RegesterUser;
 import com.roy.Expenses_Management_System.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Create_Group extends AppCompatActivity{
+public class Create_GroupActivity extends AppCompatActivity{
     CircleImageView rg_img;
     static int PReqCode=1;
     static int REQUESCODE=1;
@@ -114,10 +95,10 @@ public class Create_Group extends AppCompatActivity{
             @Override
             public void onSuccess(Void aVoid) {
 
-                Intent i = new Intent(Create_Group.this, Registration_Form.class);
+                Intent i = new Intent(Create_GroupActivity.this, Registration_FormActivity.class);
                 i.putExtra("Group_key",key).putExtra("Group_size",groupSize).putExtra("Group_Name",groupName);
                 startActivity(i);
-                Toast.makeText(Create_Group.this, "Successfully Inserted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Create_GroupActivity.this, "Successfully Inserted", Toast.LENGTH_SHORT).show();
                 loadProgress.setVisibility(View.GONE);
                 regBtn.setVisibility(View.VISIBLE);
                 rg_group_name.setText(null);

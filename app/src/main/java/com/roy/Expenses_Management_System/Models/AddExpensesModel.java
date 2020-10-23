@@ -4,6 +4,7 @@ public class AddExpensesModel {
     private String expenses_ID;
     private String group_ID;
     private String user_ID;
+    private String user_Name;
     private String expense_details;
     private String expense_price;
     private String added_date;
@@ -12,14 +13,24 @@ public class AddExpensesModel {
     {
 
     }
-    public AddExpensesModel(String group_ID, String user_ID, String expense_details, String expense_price, String added_date) {
+
+
+
+    public AddExpensesModel(String group_ID, String user_Name, String user_ID, String expense_details, String expense_price, String added_date) {
         this.group_ID = group_ID;
         this.user_ID = user_ID;
+        this.user_Name = user_Name;
         this.expense_details = expense_details;
         this.expense_price = expense_price;
         this.added_date = added_date;
     }
+    public String getUser_ID() {
+        return user_ID;
+    }
 
+    public void setUser_ID(String user_ID) {
+        this.user_ID = user_ID;
+    }
     public String getExpenses_ID() {
         return expenses_ID;
     }
@@ -36,12 +47,12 @@ public class AddExpensesModel {
         this.group_ID = group_ID;
     }
 
-    public String getUser_ID() {
-        return user_ID;
+    public String getUser_Name() {
+        return user_Name;
     }
 
-    public void setUser_ID(String user_ID) {
-        this.user_ID = user_ID;
+    public void setUser_Name(String user_Name) {
+        this.user_Name = user_Name;
     }
 
     public String getExpense_details() {

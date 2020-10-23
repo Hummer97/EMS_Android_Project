@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,7 +26,7 @@ import com.roy.Expenses_Management_System.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Expenses extends AppCompatActivity{
+public class ExpensesActivity extends AppCompatActivity{
 
 
     RecyclerView recyclerView;
@@ -49,22 +51,13 @@ public class Expenses extends AppCompatActivity{
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-         mGroupIDReference = mReference.child(mCurrentUserID).child("group_ID");
-         mGroupIDReference.addValueEventListener(new ValueEventListener() {
-             @Override
-             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                 String group_id = dataSnapshot.getValue().toString().trim();
-             }
+        final Intent intent = getIntent();
+        mCurrentGroupID = intent.getExtras().getString("groupID");
+        Log.d("Dashboard","Current Group ID : "+mCurrentGroupID);
 
-             @Override
-             public void onCancelled(@NonNull DatabaseError databaseError) {
+        
 
-             }
-        });
-
-
-
-        Query query = FirebaseDatabase.getInstance().getReference().child("Expenses").orderByChild("user_ID").equalTo(mCurrentUserID);
+        Query query = FirebaseDatabase.getInstance().getReference().child("Expenses").orderByChild("group_ID").equalTo(mCurrentGroupID);
         FirebaseRecyclerOptions<AddExpensesModel> options =
                 new FirebaseRecyclerOptions.Builder<AddExpensesModel>()
                         .setQuery(query, AddExpensesModel.class)

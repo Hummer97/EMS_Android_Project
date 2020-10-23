@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.roy.Expenses_Management_System.R;
 
-public class Profile extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
     private TextView mProfile_UserName,mProfile_UserMobileNo,mProfile_User_GroupName,mUserMail,mUserID;
     private ImageView mProfilePic;
     private FirebaseUser mUser;

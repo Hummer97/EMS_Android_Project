@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.roy.Expenses_Management_System.R;
 
-public class Login_page extends AppCompatActivity {
+public class Login_pageActivity extends AppCompatActivity {
     private Button mlogin_btn;
     private EditText mlogin_UserField;
     private EditText mlogin_PasswordField;
@@ -43,7 +43,7 @@ public class Login_page extends AppCompatActivity {
         mlogin_btn = (Button) findViewById(R.id.lg_btn);
         mlogin_UserField = (EditText) findViewById(R.id.lg_userId);
         mlogin_PasswordField = (EditText) findViewById(R.id.lg_password);
-        mProgressDialog = new ProgressDialog(Login_page.this);
+        mProgressDialog = new ProgressDialog(Login_pageActivity.this);
         mlogin_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +71,7 @@ public class Login_page extends AppCompatActivity {
                     else
                     {
                         mProgressDialog.dismiss();
-                        Toast.makeText(Login_page.this, "Error Login", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login_pageActivity.this, "Error Login", Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -85,7 +85,7 @@ public class Login_page extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild(user_id))
                 {
-                    Intent dashboardIntent = new Intent(Login_page.this, Dashboard.class);
+                    Intent dashboardIntent = new Intent(Login_pageActivity.this, DashboardActivity.class);
                     dashboardIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(dashboardIntent);
 
@@ -93,7 +93,7 @@ public class Login_page extends AppCompatActivity {
                 else
                 {
                     mProgressDialog.dismiss();
-                    Toast.makeText(Login_page.this, "User not exist", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login_pageActivity.this, "User not exist", Toast.LENGTH_LONG).show();
                 }
             }
 

@@ -33,7 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Add_expenses extends AppCompatActivity implements ValueEventListener {
+public class Add_expensesActivity extends AppCompatActivity implements ValueEventListener {
     private EditText mAdd_exp_details,mAdd_exp_price,mAdd_exp_date;
     private TextView mShow_Group_Name,mShow_UserName;
     private Button mAdd_exp_btn;
@@ -44,7 +44,7 @@ public class Add_expenses extends AppCompatActivity implements ValueEventListene
     private DatabaseReference mReference = mDatabase.getReference();
     private DatabaseReference mGroupIDReference;
     private DatabaseReference mUsersReference,mGroupNameReference;
-    private String mCurrentUserID,mCurrentGroupID;
+    private String mCurrentUserID,mCurrentGroupID,mUserName;
     private ProgressDialog mProgressDialog;
 
     @Override
@@ -59,7 +59,7 @@ public class Add_expenses extends AppCompatActivity implements ValueEventListene
         mShow_UserName = findViewById(R.id.show_UserName);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        mProgressDialog = new ProgressDialog(Add_expenses.this);
+        mProgressDialog = new ProgressDialog(Add_expensesActivity.this);
 
 
 
@@ -133,8 +133,11 @@ public class Add_expenses extends AppCompatActivity implements ValueEventListene
                     mCurrentGroupID = dataSnapshot.getValue(String.class);
                 }if (key.equals("user_name"))
                 {
-                    String UserName = dataSnapshot.getValue(String.class);
-                    mShow_UserName.setText(UserName);
+                    //String UserName = dataSnapshot.getValue(String.class);
+                    mUserName = dataSnapshot.getValue(String.class);
+                    mShow_UserName.setText(mUserName);
+
+
                 }
                 if (key.equals("group_Name"))
                 {
@@ -170,7 +173,7 @@ public class Add_expenses extends AppCompatActivity implements ValueEventListene
 
 
 
-                    AddExpensesModel addExpensesModel = new AddExpensesModel(mCurrentGroupID, mCurrentUserID, expense_detail, expense_price, expense_date);
+                    AddExpensesModel addExpensesModel = new AddExpensesModel(mCurrentGroupID, mUserName,mCurrentUserID, expense_detail, expense_price, expense_date);
                     addExpenseData(addExpensesModel);
                 }
                 else
