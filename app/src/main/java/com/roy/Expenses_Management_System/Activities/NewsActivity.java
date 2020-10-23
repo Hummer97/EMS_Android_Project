@@ -29,15 +29,15 @@ public class NewsActivity extends AppCompatActivity {
         mData = new ArrayList<>();
         //fill the row data here
 
-        mData.add(new NewsItem("Avinash Roy","Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quaerat sit veritatis facilis ad neque? Neque ratione minus excepturi officiis a officia libero eveniet. Officia commodi accusantium nulla suscipit optio.","13 june 2020",R.drawable.avatar));
-        mData.add(new NewsItem("Vishwjeet Roy","Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quaerat sit veritatis facilis ad neque? Neque ratione minus excepturi officiis a officia libero eveniet. Officia commodi accusantium nulla suscipit optio.","13 june 2020",R.drawable.avatar));
-        mData.add(new NewsItem("Ramesh","Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quaerat sit veritatis facilis ad neque? Neque ratione minus excepturi officiis a officia libero eveniet. Officia commodi accusantium nulla suscipit optio.","13 june 2020",R.drawable.avatar));
-        mData.add(new NewsItem("Abhishek","Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quaerat sit veritatis facilis ad neque? Neque ratione minus excepturi officiis a officia libero eveniet. Officia commodi accusantium nulla suscipit optio.","13 june 2020",R.drawable.avatar));
-        mData.add(new NewsItem("Abhinav","Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quaerat sit veritatis facilis ad neque? Neque ratione minus excepturi officiis a officia libero eveniet. Officia commodi accusantium nulla suscipit optio.","13 june 2020",R.drawable.avatar));
-        mData.add(new NewsItem("Ravinder","Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quaerat sit veritatis facilis ad neque? Neque ratione minus excepturi officiis a officia libero eveniet. Officia commodi accusantium nulla suscipit optio.","13 june 2020",R.drawable.avatar));
-        mData.add(new NewsItem("Brijmohan","Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quaerat sit veritatis facilis ad neque? Neque ratione minus excepturi officiis a officia libero eveniet. Officia commodi accusantium nulla suscipit optio.","13 june 2020",R.drawable.avatar));
-        mData.add(new NewsItem("Chandu","Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quaerat sit veritatis facilis ad neque? Neque ratione minus excepturi officiis a officia libero eveniet. Officia commodi accusantium nulla suscipit optio.","13 june 2020",R.drawable.avatar));
-        mData.add(new NewsItem("brijesh","Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quaerat sit veritatis facilis ad neque? Neque ratione minus excepturi officiis a officia libero eveniet. Officia commodi accusantium nulla suscipit optio.","13 june 2020",R.drawable.avatar));
+        mData.add(new NewsItem("Avinash Roy","Lorem ipsum dolor sit amet consectetur adipisicing elit. ","13 june 2020",R.drawable.avatar));
+        mData.add(new NewsItem("Vishwjeet Roy","Lorem ipsum dolor sit amet consectetur adipisicing elit. ","13 june 2020",R.drawable.avatar));
+        mData.add(new NewsItem("Ramesh","Lorem ipsum dolor sit amet consectetur adipisicing elit. ","13 june 2020",R.drawable.avatar));
+        mData.add(new NewsItem("Abhishek","Lorem ipsum dolor sit amet consectetur adipisicing elit.","13 june 2020",R.drawable.avatar));
+        mData.add(new NewsItem("Abhinav","Lorem ipsum dolor sit amet consectetur adipisicing elit. ","13 june 2020",R.drawable.avatar));
+        mData.add(new NewsItem("Ravinder","Lorem ipsum dolor sit amet consectetur adipisicing elit.","13 june 2020",R.drawable.avatar));
+        mData.add(new NewsItem("Brijmohan","Lorem ipsum dolor sit amet consectetur adipisicing elit. ","13 june 2020",R.drawable.avatar));
+        mData.add(new NewsItem("Chandu","Lorem ipsum dolor sit amet consectetur adipisicing elit.","13 june 2020",R.drawable.avatar));
+        mData.add(new NewsItem("brijesh","Lorem ipsum dolor sit amet consectetur adipisicing elit.","13 june 2020",R.drawable.avatar));
 
         //adepter ini and setup
         NewsAdapter = new NewsAdapter(this,mData);

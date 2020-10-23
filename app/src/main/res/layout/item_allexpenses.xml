@@ -30,8 +30,10 @@
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="21dp"
+            android:fontFamily="@font/aladin"
             android:text="Simple Text"
-            android:textColor="@color/title_text_color"
+            android:textColor="#02913E"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
@@ -47,8 +49,8 @@
             android:layout_toStartOf="@+id/allExp_date"
             android:layout_toLeftOf="@+id/allExp_date"
             android:lineSpacingExtra="8dp"
-            android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quaerat sit veritatis facilis ad neque? Neque ratione minus excepturi officiis a officia libero eveniet. Officia commodi accusantium nulla suscipit optio. "
-            android:textColor="@color/content_text_color" />
+            android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit. "
+            android:textColor="#0D2331" />
 
         <TextView
             android:id="@+id/allExp_price"
@@ -61,9 +63,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="16dp"
             android:layout_toRightOf="@+id/allExp_description"
-            android:fontFamily="@font/courgette"
+            android:fontFamily="@font/aladin"
             android:text="20"
-            android:textColor="@color/theme_color"
+            android:textColor="#02913E"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -76,8 +78,9 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="21dp"
             android:layout_marginRight="16dp"
+            android:fontFamily="@font/courgette"
             android:text="Date Text"
-            android:textColor="@color/content_text_color" />
+            android:textColor="#0D2331" />
 
     </RelativeLayout>
 

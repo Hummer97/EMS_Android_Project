@@ -119,7 +119,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         ownExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getUserGroupIDForOwnExpenses();
+                Intent intent = new Intent(DashboardActivity.this, OwnExpensesActivity.class);
+                startActivity(intent);
+                //getUserGroupIDForOwnExpenses();
             }
         });
         news.setOnClickListener(new View.OnClickListener() {
@@ -150,25 +152,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             }
         });
     }
-    private void getUserGroupIDForOwnExpenses() {
-        Log.d(getLocalClassName(),"mCurrentGroupID : "+mCurrentGroupID);
-        mGroupIDReference = mReference.child(mCurrentUserID).child("group_ID");
-        mGroupIDReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mCurrentGroupID = dataSnapshot.getValue().toString().trim();
-                Log.d(getLocalClassName(),"mCurrentGroupID : "+mCurrentGroupID);
-                Intent intent = new Intent(DashboardActivity.this, OwnExpensesActivity.class);
-                intent.putExtra("groupID",mCurrentGroupID);
-                startActivity(intent);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     @Override
     public void onBackPressed() {

@@ -30,6 +30,7 @@ public class ExpensesAdapter extends FirebaseRecyclerAdapter<AddExpensesModel,Ex
     @Override
     protected void onBindViewHolder(@NonNull ExpensesViewHolder holder, int position, @NonNull AddExpensesModel model) {
 
+
         holder.tv_title.setText(model.getUser_Name());
         holder.tv_content.setText(model.getExpense_details());
         holder.tv_date.setText(model.getAdded_date());

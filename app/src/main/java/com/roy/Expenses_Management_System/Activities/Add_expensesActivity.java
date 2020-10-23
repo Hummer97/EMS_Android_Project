@@ -5,6 +5,7 @@ package com.roy.Expenses_Management_System.Activities;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
@@ -90,7 +91,9 @@ public class Add_expensesActivity extends AppCompatActivity implements ValueEven
             @Override
             public void onSuccess(Void aVoid) {
                 mProgressDialog.dismiss();
-                showMessage("Successfully Inserted");
+                Intent intent = new Intent(Add_expensesActivity.this, DashboardActivity.class);
+                startActivity(intent);
+                //showMessage("Successfully Inserted");
             }
         });
     }
@@ -170,9 +173,6 @@ public class Add_expensesActivity extends AppCompatActivity implements ValueEven
                 {
                     mProgressDialog.setMessage("Please Wait...");
                     mProgressDialog.show();
-
-
-
                     AddExpensesModel addExpensesModel = new AddExpensesModel(mCurrentGroupID, mUserName,mCurrentUserID, expense_detail, expense_price, expense_date);
                     addExpenseData(addExpensesModel);
                 }

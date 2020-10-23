@@ -29,7 +29,7 @@ public class OwnExpensesActivity extends AppCompatActivity {
    private FirebaseUser mUser;
    private FirebaseDatabase mDatabase;
    private DatabaseReference mReference;
-   private String mCurrentUserID,mUserName,mUserID,mCurrentGroupID;
+   private String mCurrentUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +45,6 @@ public class OwnExpensesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.own_expenses_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-        final Intent intent = getIntent();
-        mCurrentGroupID = intent.getExtras().getString("groupID");
-        Log.d("Dashboard","Current Group ID : "+mCurrentGroupID);
 
         Query query = mReference.child("Expenses").orderByChild("user_ID").equalTo(mCurrentUserID);
         FirebaseRecyclerOptions<AddExpensesModel> options =
