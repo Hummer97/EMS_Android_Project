@@ -63,7 +63,7 @@ public class ExpensesActivity extends AppCompatActivity{
                         .setQuery(query, AddExpensesModel.class)
                         .build();
 
-        expensesAdapter = new ExpensesAdapter(options);
+        expensesAdapter = new ExpensesAdapter(options,getApplicationContext());
         recyclerView.setAdapter(expensesAdapter);
     }
 

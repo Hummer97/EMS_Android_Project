@@ -22,15 +22,25 @@ import com.roy.Expenses_Management_System.R;
 import java.util.List;
 
 public class ExpensesAdapter extends FirebaseRecyclerAdapter<AddExpensesModel,ExpensesAdapter.ExpensesViewHolder> {
-
-    public ExpensesAdapter(@NonNull FirebaseRecyclerOptions<AddExpensesModel> options) {
+    private  Context context;
+    public ExpensesAdapter(@NonNull FirebaseRecyclerOptions<AddExpensesModel> options, Context context) {
         super(options);
+        this.context = context;
     }
+
+
+
+
+
+//    public ExpensesAdapter(@NonNull FirebaseRecyclerOptions<AddExpensesModel> options) {
+//        super(options);
+//    }
 
     @Override
     protected void onBindViewHolder(@NonNull ExpensesViewHolder holder, int position, @NonNull AddExpensesModel model) {
 
-
+        holder.img_user.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_transition_animation));
+        holder.container.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_scale_animation));
         holder.tv_title.setText(model.getUser_Name());
         holder.tv_content.setText(model.getExpense_details());
         holder.tv_date.setText(model.getAdded_date());
@@ -42,7 +52,7 @@ public class ExpensesAdapter extends FirebaseRecyclerAdapter<AddExpensesModel,Ex
     public ExpensesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View layout;
-        layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_allexpenses,parent,false);
+        layout = LayoutInflater.from(context).inflate(R.layout.item_allexpenses,parent,false);
         return new ExpensesViewHolder(layout);
 
     }
