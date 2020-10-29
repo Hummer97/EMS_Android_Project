@@ -28,17 +28,43 @@ public class MainActivity extends AppCompatActivity {
         clickMeButton = (Button) findViewById(R.id.createGroupBtn);
         logInButton = findViewById(R.id.loginBtn);
 
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser() != null) {
+                    Intent loginIntent = new Intent(MainActivity.this, DashboardActivity.class);
+                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(loginIntent);
+                }
+            }
+        };
+
+//        if(!(SharedPrefManager.getInstance(getApplicationContext()).isLoggedIn())){
+//            Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+//            startActivity(intent);
+//        }
+
+
+
+//        mAuthListener = new FirebaseAuth.AuthStateListener() {
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                if(firebaseAuth.getCurrentUser() != null)
+//                {
+//                    Intent loginIntent = new Intent(MainActivity.this, DashboardActivity.class);
+//                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    startActivity(loginIntent);
+//                }
+//            }
+//        };
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        //mAuth.addAuthStateListener(mAuthListener);
-        if(!SharedPrefManager.getInstance(getApplicationContext()).isLoggedIn()){
-            Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-            startActivity(intent);
-        }
+        mAuth.addAuthStateListener(mAuthListener);
 
         clickMeButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.roy.Expenses_Management_System.R;
+import com.roy.Expenses_Management_System.sesion.SharedPrefManager;
 
 public class ProfileActivity extends AppCompatActivity {
     private TextView mProfile_UserName,mProfile_UserMobileNo,mProfile_User_GroupName,mUserMail,mUserID;
@@ -43,6 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
         mReference = FirebaseDatabase.getInstance().getReference("Users");
         mCurrentUserID = mUser.getUid(); // fetch the current User ID
         mCurrentMailID = mUser.getEmail();
+
         mReference.child(mCurrentUserID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

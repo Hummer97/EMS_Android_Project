@@ -55,16 +55,27 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         mToolbar = findViewById(R.id.dashboard_toolbar);
 
 
+
         mReference = FirebaseDatabase.getInstance().getReference("Users");
+        mAuth = FirebaseAuth.getInstance();
+
 
         mAuth = FirebaseAuth.getInstance();
-        mUser = mAuth.getCurrentUser();
-        mCurrentUserID = mUser.getUid();
 
-        if(SharedPrefManager.getInstance(getApplicationContext()).isLoggedIn()){
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(intent);
-        }
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(firebaseAuth.getCurrentUser() == null)
+                {
+                    Intent loginIntent = new Intent(DashboardActivity.this, MainActivity.class);
+                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(loginIntent);
+                }
+            }
+        };
+
+
+
     }
 
     //    @Override
@@ -75,8 +86,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     @Override
     protected void onStart() {
         super.onStart();
-
-       // mAuth.addAuthStateListener(mAuthListener);
+//        if(SharedPrefManager.getInstance(getApplicationContext()).isLoggedIn()){
+//            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+//            startActivity(intent);
+//        }
+       mAuth.addAuthStateListener(mAuthListener);
 
 
         /*-------------------------------------- Tool Bar ------------------------------------------*/
@@ -131,6 +145,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     }
 
     private void getUserGroupID() {
+        mUser = mAuth.getCurrentUser();
+        mCurrentUserID = mUser.getUid();
         Log.d(getLocalClassName(),"mCurrentGroupID : "+mCurrentGroupID);
         mGroupIDReference = mReference.child(mCurrentUserID).child("group_ID");
         mGroupIDReference.addValueEventListener(new ValueEventListener() {
@@ -197,7 +213,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     }
 
     private void logOut() {
-        SharedPrefManager.getInstance(getApplicationContext()).logout();
+        //SharedPrefManager.getInstance(getApplicationContext()).logout();
+        mAuth.signOut();
     }
     //
 //    @Override
