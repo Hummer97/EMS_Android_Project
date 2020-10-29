@@ -10,6 +10,7 @@ package com.roy.Expenses_Management_System.Activities;
 
         import com.google.firebase.auth.FirebaseAuth;
         import com.roy.Expenses_Management_System.R;
+        import com.roy.Expenses_Management_System.sesion.SharedPrefManager;
 //import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,25 +27,18 @@ public class MainActivity extends AppCompatActivity {
 
         clickMeButton = (Button) findViewById(R.id.createGroupBtn);
         logInButton = findViewById(R.id.loginBtn);
-        mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser() != null) {
-                    Intent loginIntent = new Intent(MainActivity.this, DashboardActivity.class);
-                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(loginIntent);
-                }
-            }
-        };
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        mAuth.addAuthStateListener(mAuthListener);
-
+        //mAuth.addAuthStateListener(mAuthListener);
+        if(!SharedPrefManager.getInstance(getApplicationContext()).isLoggedIn()){
+            Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+            startActivity(intent);
+        }
 
         clickMeButton.setOnClickListener(new View.OnClickListener() {
             @Override

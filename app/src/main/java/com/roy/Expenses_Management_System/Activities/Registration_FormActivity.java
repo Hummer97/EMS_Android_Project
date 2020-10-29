@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -112,6 +113,7 @@ public class Registration_FormActivity extends AppCompatActivity {
                                     {
                                         RegesterUser regesterUser = new RegesterUser(user_name, mobile_no, group_key,group_name);
                                         addUser(regesterUser);
+
                                     }
                                 }
                             });
@@ -150,13 +152,21 @@ public class Registration_FormActivity extends AppCompatActivity {
         current_user_ref.setValue(regesterUser).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
+
                 sendMailToUser(sEmail,sPassword,catchMail);
-                if(i == n)
+                String count = String.valueOf(i);
+                String groupcount = String.valueOf(n);
+                Log.d("Registration"," outer Count : "+count +"Group Count "+groupcount);
+                if(groupcount.equals(count))
                 {
+                    Log.d("Registration","If Count : "+count +"Group Count "+groupcount);
                     startActivity(new Intent(Registration_FormActivity.this, Login_pageActivity.class));
                 }
                 else
                 {
+
+                    Log.d("Registration"," else Count : "+count +"Group Count "+groupcount);
+
                     showMessage("Member "+ i +" registered successfully");
 
                     loadingProgressBar.setVisibility(View.INVISIBLE);
@@ -209,7 +219,7 @@ public class Registration_FormActivity extends AppCompatActivity {
                     "                <p style=\"font-family: sans-serif;font-size: 16px;\"><b>Important account information - save for your records.</b></p>\n" +
                     "                <div style=\"margin:10px;padding: 15px;color: white;border:2px solid cyan;margin: auto;text-align: center;\">\n" +
                     "                    <h2>Customer ID</h2>\n" +
-                    "                    <h2>"+catchMail+"</h2>\n" +
+                    "                    <h2 style = \" color:white;\">"+catchMail+"</h2>\n" +
                     "                </div><br>\n" +
                     "                <div style=\"padding: 15px;color: white;border: 2px solid cyan;margin: auto;text-align: center;\">\n" +
                     "                    <h2>Password</h2>\n" +

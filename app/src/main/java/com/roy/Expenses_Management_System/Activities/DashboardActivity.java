@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.roy.Expenses_Management_System.R;
+import com.roy.Expenses_Management_System.sesion.SharedPrefManager;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -59,16 +60,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mCurrentUserID = mUser.getUid();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser() == null) {
-                    Intent loginIntent = new Intent(DashboardActivity.this, MainActivity.class);
-                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(loginIntent);
-                }
-            }
-        };
+
+        if(SharedPrefManager.getInstance(getApplicationContext()).isLoggedIn()){
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     //    @Override
@@ -80,7 +76,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     protected void onStart() {
         super.onStart();
 
-        mAuth.addAuthStateListener(mAuthListener);
+       // mAuth.addAuthStateListener(mAuthListener);
+
 
         /*-------------------------------------- Tool Bar ------------------------------------------*/
 
@@ -200,7 +197,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     }
 
     private void logOut() {
-        mAuth.signOut();
+        SharedPrefManager.getInstance(getApplicationContext()).logout();
     }
     //
 //    @Override
