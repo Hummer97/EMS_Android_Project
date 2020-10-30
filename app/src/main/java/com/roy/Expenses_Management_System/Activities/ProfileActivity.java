@@ -3,11 +3,13 @@ package com.roy.Expenses_Management_System.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference mReference;
     private String mCurrentUserID,mCurrentMailID;
     private String group_key,current_user_group_name;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +42,14 @@ public class ProfileActivity extends AppCompatActivity {
         mProfile_UserMobileNo = findViewById(R.id.profile_userMobileNo);
         mUserMail = findViewById(R.id.profile_userMail);
         mProfilePic = findViewById(R.id.profile_userPic);
+        mProgressDialog = new ProgressDialog(ProfileActivity.this);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mReference = FirebaseDatabase.getInstance().getReference("Users");
         mCurrentUserID = mUser.getUid(); // fetch the current User ID
         mCurrentMailID = mUser.getEmail();
-
+        mProgressDialog.setMessage("Loading Please wait..");
+        mProgressDialog.show();
         mReference.child(mCurrentUserID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -77,6 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
             mReference.child(group_key).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    mProgressDialog.dismiss();
                     current_user_group_name = dataSnapshot.child("group_Name").getValue().toString();
                     mProfile_User_GroupName.setText(current_user_group_name);
                 }

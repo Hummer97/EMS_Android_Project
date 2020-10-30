@@ -5,9 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +40,10 @@ public class ExpensesActivity extends AppCompatActivity{
 
     RecyclerView recyclerView;
     ExpensesAdapter expensesAdapter;
+    Dialog epicDialog;
+    TextView mEpic_txt;
+    Button mEpic_btn;
+    ImageView mEpic_icon;
     private FirebaseUser mUser;
     private FirebaseAuth mAuth;
     private DatabaseReference mReference;
@@ -45,6 +58,7 @@ public class ExpensesActivity extends AppCompatActivity{
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mCurrentUserID = mUser.getUid();
+        epicDialog = new Dialog(this);
 
         //ini view
         recyclerView = findViewById(R.id.expenses_rv);
@@ -58,6 +72,24 @@ public class ExpensesActivity extends AppCompatActivity{
         
 
         Query query = FirebaseDatabase.getInstance().getReference().child("Expenses").orderByChild("group_ID").equalTo(mCurrentGroupID);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists()) {
+
+                    Toast.makeText(ExpensesActivity.this, "Please Wait...", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    showEpicDialog();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                throw databaseError.toException();
+            }
+        });
         FirebaseRecyclerOptions<AddExpensesModel> options =
                 new FirebaseRecyclerOptions.Builder<AddExpensesModel>()
                         .setQuery(query, AddExpensesModel.class)
@@ -65,6 +97,27 @@ public class ExpensesActivity extends AppCompatActivity{
 
         expensesAdapter = new ExpensesAdapter(options,getApplicationContext());
         recyclerView.setAdapter(expensesAdapter);
+
+
+    }
+
+    private void showEpicDialog() {
+        epicDialog.setContentView(R.layout.epic_dailog_datanotfound);
+        mEpic_icon = (ImageView) epicDialog.findViewById(R.id.epic_icon);
+        mEpic_txt = (TextView) epicDialog.findViewById(R.id.epic_txt);
+        mEpic_btn = (Button) epicDialog.findViewById(R.id.epic_btn);
+
+        mEpic_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                epicDialog.dismiss();
+                Intent intent  = new Intent(ExpensesActivity.this,Add_expensesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        epicDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        epicDialog.show();
     }
 
     @Override

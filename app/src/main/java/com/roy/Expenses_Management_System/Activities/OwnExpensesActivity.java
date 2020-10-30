@@ -5,9 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +33,10 @@ import com.roy.Expenses_Management_System.R;
 public class OwnExpensesActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     OwnExpensesAdapter ownExpensesAdapter;
+    Dialog mEpicDialog;
+    TextView mEpic_own_txt;
+    Button mEpic_own_btn;
+    ImageView mEpic_own_icon;
    private FirebaseAuth mAuth;
    private FirebaseUser mUser;
    private FirebaseDatabase mDatabase;
@@ -41,12 +53,31 @@ public class OwnExpensesActivity extends AppCompatActivity {
         mCurrentUserID = mUser.getUid();
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference();
-
+        mEpicDialog = new Dialog(this);
         recyclerView = findViewById(R.id.own_expenses_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         Query query = mReference.child("Expenses").orderByChild("user_ID").equalTo(mCurrentUserID);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists()) {
+
+                    Toast.makeText(OwnExpensesActivity.this, "Please Wait...", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    showEpicDialog();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                throw databaseError.toException();
+            }
+        });
+
         FirebaseRecyclerOptions<AddExpensesModel> options =
                 new FirebaseRecyclerOptions.Builder<AddExpensesModel>()
                         .setQuery(query, AddExpensesModel.class)
@@ -54,6 +85,25 @@ public class OwnExpensesActivity extends AppCompatActivity {
 
         ownExpensesAdapter = new OwnExpensesAdapter(options);
         recyclerView.setAdapter(ownExpensesAdapter);
+    }
+
+    private void showEpicDialog() {
+        mEpicDialog.setContentView(R.layout.epic_dailog_datanotfound);
+        mEpic_own_icon = (ImageView) mEpicDialog.findViewById(R.id.epic_icon);
+        mEpic_own_txt = (TextView) mEpicDialog.findViewById(R.id.epic_txt);
+        mEpic_own_btn = (Button) mEpicDialog.findViewById(R.id.epic_btn);
+
+        mEpic_own_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEpicDialog.dismiss();
+                Intent intent  = new Intent(OwnExpensesActivity.this,Add_expensesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mEpicDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        mEpicDialog.show();
     }
     @Override
     protected void onStart()

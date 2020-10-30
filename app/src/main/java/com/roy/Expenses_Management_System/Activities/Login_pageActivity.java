@@ -91,7 +91,6 @@ public class Login_pageActivity extends AppCompatActivity {
                     Intent dashboardIntent = new Intent(Login_pageActivity.this, DashboardActivity.class);
                     dashboardIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(dashboardIntent);
-
                 }
                 else
                 {
