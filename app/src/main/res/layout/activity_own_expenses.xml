@@ -1,50 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0D2331"
     tools:context=".Activities.OwnExpensesActivity">
-<androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:id="@+id/dashboard_toolbar"
-    android:padding="8dp"
-    app:cardBackgroundColor="#0069C0"
-    android:elevation="8dp"
-    android:layout_height="wrap_content">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="40dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:id="@+id/toolbar"
-            android:layout_marginLeft="10dp"
-            android:layout_centerVertical="true"
-            android:background="@drawable/back_btn"
-            android:layout_height="wrap_content">
 
-        </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:text="Own Expenses"
-            android:layout_marginLeft="10dp"
-            android:textColor="#fff"
-            android:layout_toRightOf="@id/toolbar"
-            android:layout_centerVertical="true"
-            android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dashboard_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:padding="8dp"
+        app:cardBackgroundColor="#0069C0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
-        </TextView>
-    </RelativeLayout>
-</androidx.cardview.widget.CardView>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp">
+
+            <ImageView
+                android:id="@+id/toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/back_btn">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/toolbar"
+                android:text="Own Expenses"
+                android:textColor="#fff">
+
+            </TextView>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/own_expenses_rv"
-        android:layout_below="@id/dashboard_toolbar"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dashboard_toolbar" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9183673"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#99CDE6"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</RelativeLayout>
+        app:layout_constraintTop_toBottomOf="@+id/own_expenses_rv"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/rv_own_total"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/courgette"
+            android:gravity="center_horizontal"
+            android:paddingStart="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingRight="20dp"
+            android:text="Total : "
+            android:textAlignment="center"
+            android:textColor="#0069C0"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rv_own_total_price"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/courgette"
+            android:gravity="center_horizontal"
+            android:paddingTop="8dp"
+            android:text="234"
+            android:textAlignment="center"
+            android:textColor="#025498"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.roy.Expenses_Management_System.Adapters.ExpensesAdapter;
 import com.roy.Expenses_Management_System.Adapters.OwnExpensesAdapter;
 import com.roy.Expenses_Management_System.Models.AddExpensesModel;
 import com.roy.Expenses_Management_System.R;
@@ -42,6 +43,7 @@ public class OwnExpensesActivity extends AppCompatActivity {
    private FirebaseDatabase mDatabase;
    private DatabaseReference mReference;
    private String mCurrentUserID;
+   public static TextView own_total_price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +57,14 @@ public class OwnExpensesActivity extends AppCompatActivity {
         mReference = mDatabase.getReference();
         mEpicDialog = new Dialog(this);
         recyclerView = findViewById(R.id.own_expenses_rv);
+        own_total_price = findViewById(R.id.rv_own_total_price);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        getOwnData();
 
+    }
+
+    private void getOwnData() {
         Query query = mReference.child("Expenses").orderByChild("user_ID").equalTo(mCurrentUserID);
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -83,7 +90,7 @@ public class OwnExpensesActivity extends AppCompatActivity {
                         .setQuery(query, AddExpensesModel.class)
                         .build();
 
-        ownExpensesAdapter = new OwnExpensesAdapter(options);
+        ownExpensesAdapter = new OwnExpensesAdapter(options,getApplicationContext());
         recyclerView.setAdapter(ownExpensesAdapter);
     }
 
@@ -104,6 +111,17 @@ public class OwnExpensesActivity extends AppCompatActivity {
 
         mEpicDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         mEpicDialog.show();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        OwnExpensesActivity.own_total_price.setText(String.valueOf(OwnExpensesAdapter.own_total));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        OwnExpensesAdapter.own_total =0;
     }
     @Override
     protected void onStart()

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -49,28 +50,56 @@ public class ExpensesActivity extends AppCompatActivity{
     private DatabaseReference mReference;
     private DatabaseReference mGroupIDReference;
     private String mCurrentUserID,mCurrentGroupID;
+    public  static  TextView total_price;
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
+        total_price = findViewById(R.id.rv_total_price);
         mReference = FirebaseDatabase.getInstance().getReference("Users");
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mCurrentUserID = mUser.getUid();
         epicDialog = new Dialog(this);
+        recyclerView = findViewById(R.id.expenses_rv);
+        mSwipeRefreshLayout = findViewById(R.id.exp_refresh);
 
         //ini view
-        recyclerView = findViewById(R.id.expenses_rv);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
 
 
         final Intent intent = getIntent();
         mCurrentGroupID = intent.getExtras().getString("groupID");
         Log.d("Dashboard","Current Group ID : "+mCurrentGroupID);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mSwipeRefreshLayout.setRefreshing(false);
 
-        
+            }
+        });
 
+        getdata();
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ExpensesActivity.total_price.setText(String.valueOf(ExpensesAdapter.g_total));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ExpensesAdapter.g_total =0;
+    }
+
+    private void getdata(){
         Query query = FirebaseDatabase.getInstance().getReference().child("Expenses").orderByChild("group_ID").equalTo(mCurrentGroupID);
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -90,15 +119,15 @@ public class ExpensesActivity extends AppCompatActivity{
                 throw databaseError.toException();
             }
         });
+
+
         FirebaseRecyclerOptions<AddExpensesModel> options =
                 new FirebaseRecyclerOptions.Builder<AddExpensesModel>()
                         .setQuery(query, AddExpensesModel.class)
                         .build();
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         expensesAdapter = new ExpensesAdapter(options,getApplicationContext());
         recyclerView.setAdapter(expensesAdapter);
-
-
     }
 
     private void showEpicDialog() {

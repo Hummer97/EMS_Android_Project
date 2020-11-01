@@ -192,6 +192,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 startActivity(all_expenses_intent);
                 break;
             case R.id.nav_own_expenses:
+                Intent own_expenses_intent = new Intent(DashboardActivity.this, OwnExpensesActivity.class);
+                startActivity(own_expenses_intent);
                 break;
             case R.id.nav_notification:
                 Intent notification_intent = new Intent(DashboardActivity.this, NewsActivity.class);

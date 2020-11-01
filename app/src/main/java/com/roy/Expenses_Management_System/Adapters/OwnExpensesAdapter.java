@@ -1,5 +1,7 @@
 package com.roy.Expenses_Management_System.Adapters;
 
+import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.roy.Expenses_Management_System.Activities.ExpensesActivity;
+import com.roy.Expenses_Management_System.Activities.OwnExpensesActivity;
 import com.roy.Expenses_Management_System.Models.AddExpensesModel;
 import com.roy.Expenses_Management_System.R;
 
+import java.util.Collections;
+
 public class OwnExpensesAdapter extends FirebaseRecyclerAdapter<AddExpensesModel,OwnExpensesAdapter.OwnExpensesViewHolder> {
+    private Context context;
+    public static int own_total =0;
 
-
-    public OwnExpensesAdapter(@NonNull FirebaseRecyclerOptions<AddExpensesModel> options) {
+    public OwnExpensesAdapter(@NonNull FirebaseRecyclerOptions<AddExpensesModel> options, Context context) {
         super(options);
+        this.context = context;
     }
 
     @Override
@@ -28,6 +36,13 @@ public class OwnExpensesAdapter extends FirebaseRecyclerAdapter<AddExpensesModel
         holder.tv_content.setText(model.getExpense_details());
         holder.tv_date.setText(model.getAdded_date());
         holder.tv_price.setText(model.getExpense_price()+"Rs");
+
+        for(int i = 0; i< Collections.singletonList(model).size(); i++){
+            own_total +=  Integer.parseInt(Collections.singletonList(model).get(i).getExpense_price());
+        }
+
+        OwnExpensesActivity.own_total_price.setText(String.valueOf(own_total)+" Rs");
+        Log.d("Expenses","Price: "+own_total);
 
     }
 

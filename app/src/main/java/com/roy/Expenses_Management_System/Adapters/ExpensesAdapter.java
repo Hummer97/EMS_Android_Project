@@ -2,6 +2,7 @@ package com.roy.Expenses_Management_System.Adapters;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,30 +10,33 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.roy.Expenses_Management_System.Activities.ExpensesActivity;
 import com.roy.Expenses_Management_System.Models.AddExpensesModel;
 import com.roy.Expenses_Management_System.Models.ItemExpenses;
 import com.roy.Expenses_Management_System.R;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ExpensesAdapter extends FirebaseRecyclerAdapter<AddExpensesModel,ExpensesAdapter.ExpensesViewHolder> {
     private  Context context;
+    public static int g_total =0;
+
     public ExpensesAdapter(@NonNull FirebaseRecyclerOptions<AddExpensesModel> options, Context context) {
         super(options);
         this.context = context;
     }
 
 
-
-
-
-//    public ExpensesAdapter(@NonNull FirebaseRecyclerOptions<AddExpensesModel> options) {
+    //    public ExpensesAdapter(@NonNull FirebaseRecyclerOptions<AddExpensesModel> options) {
 //        super(options);
 //    }
 
@@ -45,6 +49,14 @@ public class ExpensesAdapter extends FirebaseRecyclerAdapter<AddExpensesModel,Ex
         holder.tv_content.setText(model.getExpense_details());
         holder.tv_date.setText(model.getAdded_date());
         holder.tv_price.setText(model.getExpense_price()+"Rs");
+
+
+        for(int i=0;i<Collections.singletonList(model).size();i++){
+            g_total +=  Integer.parseInt(Collections.singletonList(model).get(i).getExpense_price());
+        }
+
+        ExpensesActivity.total_price.setText(String.valueOf(g_total)+ " Rs");
+        Log.d("Expenses","Price: "+g_total);
     }
 
     @NonNull
@@ -71,7 +83,9 @@ public class ExpensesAdapter extends FirebaseRecyclerAdapter<AddExpensesModel,Ex
             tv_price = itemView.findViewById(R.id.allExp_price);
             img_user = itemView.findViewById(R.id.allExp_UserImg);
 
+
         }
+
     }
 
 }
