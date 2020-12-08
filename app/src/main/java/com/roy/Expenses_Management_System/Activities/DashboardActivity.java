@@ -23,12 +23,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.roy.Expenses_Management_System.R;
+import com.roy.Expenses_Management_System.Receipts;
 import com.roy.Expenses_Management_System.sesion.SharedPrefManager;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private View addExpenses;
-    private View allExpense, ownExpense;
+    private View allExpense, ownExpense, receipts;
     private View profile;
     private View news;
     private FirebaseAuth mAuth;
@@ -53,6 +54,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         mToolbar = findViewById(R.id.dashboard_toolbar);
+        receipts = findViewById(R.id.receipts);
 
 
 
@@ -110,6 +112,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        receipts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashboardActivity.this, Receipts.class);
                 startActivity(intent);
             }
         });
